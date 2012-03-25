@@ -13,10 +13,9 @@ else if($request == "create")
 else if($request == "login")
 {
 	parse_str($_GET["data"], $credentials);
-	$loggedIn = $charlie->login($credentials[username], $credentials[password]);
-	
-	if($loggedIn)
-	{
-		echo "success";
-	}
+	echo $charlie->login($credentials[username], $credentials[password]); //boolean
+}
+else if($request == "logout")
+{
+	$charlie->logout();
 }

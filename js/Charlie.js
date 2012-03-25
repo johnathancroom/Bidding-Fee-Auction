@@ -180,9 +180,14 @@ $(document).ready(function() {
 			request: "login",
 			data: data
 		}, function(data) {
-			console.log(data);
+			//Boolean returned
 		})
 		
 		e.preventDefault();//Don't submit
+	})
+	$("#logout").on("click", function() {
+		$.get(functions, {
+			request: "logout"
+		})
 	})
 })

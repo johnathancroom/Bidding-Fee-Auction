@@ -20,11 +20,25 @@
 
 <body>
 	<!-- Login -->
-	<form id="form_login" action="#" method="POST">
-		<input type="text" name="username" placeholder="Username">
-		<input type="password" name="password" placeholder="Password">
-		<input type="submit" id="submit_login" value="Login">
-	</form>
+	<?php 
+	if(!$loggedIn)
+	{
+		?>
+		<form id="form_login" action="#" method="POST">
+			<input type="text" name="username" placeholder="Username">
+			<input type="password" name="password" placeholder="Password">
+			<input type="submit" id="submit_login" value="Login">
+		</form>
+		<?php 
+	}
+	else
+	{
+		echo $user[username];
+		?>
+		<input type="button" id="logout" value="Logout">
+		<?php
+	}
+	?>
 	
 	<!-- Separator -->
 	<hr>
