@@ -5,6 +5,7 @@ $request = $_GET["request"];
 if($request == "bid")
 {
 	$charlie->bid($_GET["id"], $_GET["extra_time"]);
+	//$pusher->trigger("presence-auction_data", "client-auction_data_updated", $_GET);
 }
 else if($request == "create")
 {

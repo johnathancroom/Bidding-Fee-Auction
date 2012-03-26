@@ -8,10 +8,10 @@ class Charlie {
 	function db_select($choice, $id) {
 		if($choice == "auctions")
 		{
-			$query = mysql_query("SELECT * FROM auctions WHERE end_time > '".mysql_escape_string(time())."' ORDER BY end_time") or die(mysql_error());
+			$query = mysql_query("SELECT *, auctions.id AS auction_id, users.id AS user_id FROM auctions, users WHERE auctions.end_time > '".mysql_escape_string(time())."' AND auctions.bidder_id=users.id ORDER BY auctions.end_time") or die(mysql_error());
 			while($row = mysql_fetch_array($query, MYSQL_ASSOC))
 			{
-				$rows[$row[id]] = $row;
+				$rows[$row[auction_id]] = $row;
 			}
 			return $rows;
 		}

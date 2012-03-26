@@ -138,7 +138,6 @@ $(document).ready(function() {
 		{//Bounce time forward
 			var extra_time = 15-time_left;
 		}
-		console.log(time_left);
 		
 		//Server update
 		$.ajax({
