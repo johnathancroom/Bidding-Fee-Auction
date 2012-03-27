@@ -4,12 +4,13 @@ $request = $_GET["request"];
 
 if($request == "bid")
 {
-	$charlie->bid($_GET["id"], $_GET["extra_time"]);
+	$data = $charlie->bid($_GET["id"]);
+	echo json_encode($data);
 	//$pusher->trigger("presence-auction_data", "client-auction_data_updated", $_GET);
 }
 else if($request == "create")
 {
-	$charlie->auction_create();
+	echo $charlie->auction_create();
 }
 else if($request == "login")
 {

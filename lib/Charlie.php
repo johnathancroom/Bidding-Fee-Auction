@@ -5,7 +5,7 @@ class Charlie {
 		mysql_connect("localhost", "root", "root") or die(mysql_error());
 		mysql_select_db("lindenbid") or die(mysql_error());
 	}
-	function db_select($choice, $id) {
+	function db_select($choice) {
 		if($choice == "auctions")
 		{
 			$query = mysql_query("SELECT *, auctions.id AS auction_id, users.id AS user_id FROM auctions, users WHERE auctions.end_time > '".mysql_escape_string(time())."' AND auctions.bidder_id=users.id ORDER BY auctions.end_time") or die(mysql_error());
@@ -16,39 +16,56 @@ class Charlie {
 			return $rows;
 		}
 	}
-	function bid($id, $extra_time) {
+	function bid($id) {
+		global $user;
+		
 		$query = mysql_query("SELECT end_time, price FROM auctions WHERE id='".mysql_escape_string($id)."'") or die(mysql_error());
 		$row = mysql_fetch_array($query, MYSQL_ASSOC);
 		$end_time = $row[end_time];
-		$price = $row[price]*100;
-		$price += 1;
-		$price /= 100;
-		
-		$user = $this->checkLogin();
-		mysql_query("UPDATE auctions SET price='".mysql_escape_string($price)."', bidder_id='".mysql_escape_string($user[id])."' WHERE id='".mysql_escape_string($id)."'") or die(mysql_error());
-		
-		//Time update
-		if($extra_time > 0 && time() < $end_time)
+		if(time() <= $end_time)
 		{
-			mysql_query("UPDATE auctions SET end_time='".mysql_escape_string($end_time+$extra_time)."' WHERE id='$id'");
+			//Update price
+			$price = $row[price]*100;
+			$price += 1;
+			$price /= 100;
+			
+			mysql_query("UPDATE auctions SET price='".mysql_escape_string($price)."', bidder_id='".mysql_escape_string($user[id])."' WHERE id='".mysql_escape_string($id)."'");
+			
+			$data[price] = $price;
+			
+			//Push time back to x seconds 
+			$time_left = $end_time-time();
+			if($time_left <= 15)
+			{
+				$add_time = 15-$time_left; 
+				mysql_query("UPDATE auctions SET end_time='".mysql_escape_string($end_time+$add_time)."' WHERE id='".mysql_escape_string($id)."'");
+			}
+			
+			$data[end_time] = $end_time+$add_time;
+			
+			//Bidder update
+			$data[highest_bidder] = $user[username];
+			
+			//History Update
+			mysql_query("INSERT INTO history (auction_id, price, bidder_id, time) VALUES(
+				'".mysql_escape_string($id)."',
+				'".mysql_escape_string($price)."',
+				'".mysql_escape_string($user[id])."',
+				'".mysql_escape_string(time())."'
+			)");
+
+			//Return appropriate data
+			return $data;
 		}
-		
-		//History Update
-		mysql_query("INSERT INTO history (auction_id, price, bidder_id, time) VALUES(
-			'".mysql_escape_string($id)."',
-			'".mysql_escape_string($price)."',
-			'".mysql_escape_string($user[id])."',
-			'".mysql_escape_string(time())."'
-		)");
 	}
 	function auction_create() {
 		$query = mysql_query("INSERT INTO auctions (name, end_time) 
 			VALUES (
 				'Generated Name',
-				'".mysql_escape_string(time()+12)."'
+				'".mysql_escape_string(time()+10)."'
 			)") or die(mysql_error());
 	}
-	function checkLogin() {
+	function getLoggedInUser() {
 		if(isset($_COOKIE[login]))
 		{
 			global $loggedIn;
@@ -82,4 +99,4 @@ $pusher = new Pusher("3a1bac2553ed8b533ac0", "1a2dec72f789117966f7", "16968"); /
 $charlie = new Charlie();
 $charlie->db_init();
 
-$user = $charlie->checkLogin();
+$user = $charlie->getLoggedInUser();

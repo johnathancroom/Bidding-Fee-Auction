@@ -17,7 +17,7 @@ $(document).ready(function() {
 	
 	channel.bind("pusher:subscription_succeeded", function(members) {			
 		channel.bind("client-auction_data_updated", function(data) {
-			update(data.id, data.extra_time);
+			update(data.id, data.price, data.end_time, data.highest_bidder);
 		})
 	})
 	
@@ -33,14 +33,16 @@ $(document).ready(function() {
 	function getServerTime() {
 		var local = new Date();
 		var utc = local.getTime() + (local.getTimezoneOffset() * 60000);
-		var server = new Date(utc + (3600000*-7));
+		var server = new Date(utc + (3600000*-7));//Arizona
 		return parseInt(server.getTime()/1000);
 	}
 	
-	function update(id, extra_time) {
+	function update(id, price, end_time, highest_bidder) {
+		var auction = $("li[data-id="+id+"]");
+		
 		//Update Price
-		var price = $("li[data-id="+id+"] .price");
-		var number = Math.round((((parseFloat(price.html())*100)+1)/100)*100)/100;
+		var priceElement = $(".price", auction);
+		var number = price;
 		var temp = number.toString();
 		temp = temp.split(".");
 		if(temp[1] == undefined)
@@ -52,18 +54,19 @@ $(document).ready(function() {
 			number += "0";
 		}
 		
-		price
+		priceElement
 			.stop().animate({backgroundColor: "#FCC"}, 100, function() {
-				price.animate({backgroundColor: "transparent"}, 100);
+				priceElement.animate({backgroundColor: "transparent"}, 100);
 			})
 			.html(number);
 			
 		//Update time
-		if(extra_time > 0)
-		{
-			var time = $("li[data-id="+id+"] .end_time");
-			time.attr("data-end-time", parseInt(time.attr("data-end-time"))+extra_time);
-		}
+		$(".end_time", auction)
+			.attr("data-end-time", parseInt(end_time));
+			
+		//Update bidder
+		$(".highest_bidder", auction)
+			.html(highest_bidder);
 	}
 	
 	function updateTime() {
@@ -126,37 +129,28 @@ $(document).ready(function() {
 	$(".button_bid").on("click", function() {
 		var id = $(this).parent().attr("data-id");
 		
-		//Check time
-		var server_time = getServerTime();
-		var end_time = $(this).prev(".end_time").attr("data-end-time");
-		var time_left = end_time-server_time;
-		if(time_left < 0)
-		{//Auction ended
-			return;
-		}
-		else if(time_left < 15)
-		{//Bounce time forward
-			var extra_time = 15-time_left;
-		}
-		
 		//Server update
 		$.ajax({
 			url: functions, 
 			data: {
 				request: "bid",
-				id: id,
-				extra_time: extra_time
+				id: id
+			},
+			success: function(data) {
+				data = $.parseJSON(data);
+				
+				//Self update
+				update(id, data.price, data.end_time, data.highest_bidder);
+				
+				//Client update
+				var triggered = channel.trigger("client-auction_data_updated", {
+					id: id,
+					price: data.price,
+					end_time: data.end_time,
+					highest_bidder: data.highest_bidder
+				});
 			}
 		})
-		
-		//Client update
-		var triggered = channel.trigger("client-auction_data_updated", {
-			id: id,
-			extra_time: extra_time
-		});
-		
-		//Update self
-		update(id, extra_time);
 	})
 	
 	$("#new_auction").on("click", function() {
