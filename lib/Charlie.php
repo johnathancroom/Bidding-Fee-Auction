@@ -2,7 +2,7 @@
 class Charlie {
 	function db_init() {
 		date_default_timezone_set("America/Phoenix");
-		mysql_connect("localhost", "root", "root") or die(mysql_error());
+		mysql_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASS) or die(mysql_error());
 		mysql_select_db("lindenbid") or die(mysql_error());
 	}
 	function db_select($choice) {
@@ -19,12 +19,12 @@ class Charlie {
 	function bid($id) {
 		global $user;
 		
-		$query = mysql_query("SELECT end_time, price FROM auctions WHERE id='".mysql_escape_string($id)."'") or die(mysql_error());
+		$query = mysql_query("SELECT end_time, price, bidder_id FROM auctions WHERE id='".mysql_escape_string($id)."'") or die(mysql_error());
 		$row = mysql_fetch_array($query, MYSQL_ASSOC);
 		$end_time = $row[end_time];
-		if(time() <= $end_time)
+		if(time() <= $end_time && $row[bidder_id] != $user[id])//Not ended & New bidder
 		{
-			//Update price
+			//Update auction
 			$price = $row[price]*100;
 			$price += 1;
 			$price /= 100;
@@ -43,7 +43,7 @@ class Charlie {
 			
 			$data[end_time] = $end_time+$add_time;
 			
-			//Bidder update
+			//Bidder updates
 			$data[highest_bidder] = $user[username];
 			
 			//History Update
@@ -56,6 +56,10 @@ class Charlie {
 
 			//Return appropriate data
 			return $data;
+		}
+		else
+		{
+			return array("error"=>"error msg");
 		}
 	}
 	function auction_create() {
@@ -92,9 +96,14 @@ class Charlie {
 	}
 }
 
-// Initialization
+//Config
+$config_file = "/Applications/MAMP/htdocs/Bidding-Fee-Auction/config.php";
+file_exists($config_file) or die("config.php file not loaded!");
+require($config_file);
+
+//Initialization
 require("Pusher.php");
-$pusher = new Pusher("3a1bac2553ed8b533ac0", "1a2dec72f789117966f7", "16968"); //key, secret, app_id
+$pusher = new Pusher("7da53c26a313d349592f", PUSHER_SECRET, "16968"); //key, secret, app_id
 
 $charlie = new Charlie();
 $charlie->db_init();

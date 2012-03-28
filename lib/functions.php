@@ -11,6 +11,7 @@ if($request == "bid")
 else if($request == "create")
 {
 	echo $charlie->auction_create();
+	$pusher->trigger("refresh", "refresh", 1);
 }
 else if($request == "login")
 {

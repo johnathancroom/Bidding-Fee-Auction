@@ -26,7 +26,9 @@
 			<input type="submit" id="submit_login" value="Login">
 		</form>
 	{% else %}
-		{{user.username}} <input type="button" id="logout" value="Logout">
+		{{user.username}}
+		<span class="bids">{{user.bids}}</span> bids
+		<input type="button" id="logout" value="Logout">
 	{% endif %}
 	
 	<!-- Separator -->
@@ -34,7 +36,6 @@
 	
 	<!-- Bidding Tiles -->
 	<input type="button" id="new_auction" value="Create New Auction">
-	<input type="checkbox" id="demo"> <label for="demo">Toggle Demo</label>
 	
 	<ul>
 		{% for row in auction_rows %}

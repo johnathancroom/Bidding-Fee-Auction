@@ -11,9 +11,9 @@ $(document).ready(function() {
 	
 	
 	Pusher.channel_auth_endpoint = "/lib/Pusher_auth.php"; // Authentication for presence or private channels
-	var pusher = new Pusher("3a1bac2553ed8b533ac0");
+	var pusher = new Pusher("7da53c26a313d349592f");
 	var channel = pusher.subscribe("presence-auction_data");
-	var refresh = pusher.subscribe("presence-refresh");//temp
+	var refresh = pusher.subscribe("refresh");//temp
 	
 	channel.bind("pusher:subscription_succeeded", function(members) {			
 		channel.bind("client-auction_data_updated", function(data) {
@@ -22,7 +22,7 @@ $(document).ready(function() {
 	})
 	
 	//temp
-	refresh.bind("client-refresh", function(data) {
+	refresh.bind("refresh", function(data) {
 		location.reload(true);
 	})
 	
@@ -139,16 +139,23 @@ $(document).ready(function() {
 			success: function(data) {
 				data = $.parseJSON(data);
 				
-				//Self update
-				update(id, data.price, data.end_time, data.highest_bidder);
-				
-				//Client update
-				var triggered = channel.trigger("client-auction_data_updated", {
-					id: id,
-					price: data.price,
-					end_time: data.end_time,
-					highest_bidder: data.highest_bidder
-				});
+				if(data.error != undefined)
+				{
+					console.log(data.error);
+				}
+				else
+				{
+					//Self update
+					update(id, data.price, data.end_time, data.highest_bidder);
+					
+					//Client update
+					var triggered = channel.trigger("client-auction_data_updated", {
+						id: id,
+						price: data.price,
+						end_time: data.end_time,
+						highest_bidder: data.highest_bidder
+					});
+				}
 			}
 		})
 	})
@@ -157,14 +164,6 @@ $(document).ready(function() {
 		$.get(functions, {
 			request: "create"
 		})
-		var triggered = refresh.trigger("client-refresh", {});//temp
-	})
-	
-	$("#test").on("click", function() {
-		for(i=0;i<5;i++)
-		{
-			$(".button_bid").click();
-		}
 	})
 	
 	$("#form_login").submit(function(e) {
