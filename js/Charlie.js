@@ -38,7 +38,7 @@ $(document).ready(function() {
 	}
 	
 	function update(id, price, end_time, highest_bidder) {
-		var auction = $("li[data-id="+id+"]");
+		var auction = $("div[data-id="+id+"]");
 		
 		//Update Price
 		var priceElement = $(".price", auction);
@@ -58,7 +58,7 @@ $(document).ready(function() {
 			.stop().animate({backgroundColor: "#FCC"}, 100, function() {
 				priceElement.animate({backgroundColor: "transparent"}, 100);
 			})
-			.html(number);
+			.html("$"+number);
 			
 		//Update time
 		$(".end_time", auction)

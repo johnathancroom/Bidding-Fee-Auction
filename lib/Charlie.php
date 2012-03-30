@@ -94,10 +94,53 @@ class Charlie {
 	function logout() {
 		setcookie("login", "", time()-3600, "/");
 	}
+	function render() {
+		//Init
+		require("Twig/Autoloader.php");
+		Twig_Autoloader::register();
+		$twig = new Twig_Environment(new Twig_Loader_Filesystem("themes"));
+		
+		//Query
+		$query = $_SERVER[QUERY_STRING];
+		$query_split = explode("/", $query);
+		if($query_split[1] == "") $query_split[1] = "home";
+		
+		//Decide where to go
+		if($query_split[1] == "home")
+		{//Page: home
+			$content = $twig->render("pages/".$query_split[1].".html", array(
+				"loggedIn" => $loggedIn,
+				"user" => $user,
+				
+				"auction_rows" => $this->db_select("auctions")
+			));
+		}
+		else if($query_split[1] == "auction")
+		{//Page: auction
+			$auction_id = $query_split[2];
+			$content = "specific auction ".$query_split[2];
+		}
+		else if(file_exists("themes/pages/".$query_split[1].".html"))
+		{//Page: other
+			$content = $twig->render("pages/".$query_split[1].".html");
+		}
+		else
+		{//Page: not found
+			header("Status: 404 Not Found");
+			$content = $twig->render("pages/404.html");
+		}
+		
+		//Render
+		return 
+			$twig->render("includes/head.html")
+			.$content
+			.$twig->render("includes/foot.html");
+	}
 }
 
 //Config
-$config_file = "/Applications/MAMP/htdocs/Bidding-Fee-Auction/config.php";
+define("PATH", "/Applications/MAMP/htdocs/Bidding-Fee-Auction/");
+$config_file = PATH."config.php";
 file_exists($config_file) or die("config.php file not loaded!");
 require($config_file);
 

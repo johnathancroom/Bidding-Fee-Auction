@@ -1,0 +1,33 @@
+<!-- Login -->
+{% if not loggedIn %}
+	<form id="form_login" action="#" method="POST">
+		<input type="text" name="username" placeholder="Username">
+		<input type="password" name="password" placeholder="Password">
+		<input type="submit" id="submit_login" value="Login">
+	</form>
+{% else %}
+	{{user.username}}
+	<span class="bids">{{user.bids}}</span> bids
+	<input type="button" id="logout" value="Logout">
+{% endif %}
+
+<!-- Separator -->
+<hr>
+
+<!-- Actions -->
+<input type="button" id="new_auction" value="Create New Auction">
+
+<!-- Separator -->
+<hr>
+
+<!-- Bidding Tiles -->
+{% for row in auction_rows %}
+	<!--<li data-id="{{row.auction_id}}">
+		{{row.name}}
+		($<span class="price">{{row.price}}</span>)
+		<span class="end_time" data-end-time="{{row.end_time}}"></span>
+		<span class="highest_bidder">{{row.username}}</span>
+		<input type="button" class="button_bid" value="Bid!">
+	</li>-->
+	{% include "includes/bid-window.html" %}
+{% endfor %}
