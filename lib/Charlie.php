@@ -5,7 +5,7 @@ class Charlie {
 		mysql_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASS) or die(mysql_error());
 		mysql_select_db("lindenbid") or die(mysql_error());
 	}
-	function db_select($choice) {
+	function db_select($choice, $id) {
 		if($choice == "auctions")
 		{
 			$query = mysql_query("SELECT *, auctions.id AS auction_id, users.id AS user_id FROM auctions, users WHERE auctions.end_time > '".mysql_escape_string(time())."' AND auctions.bidder_id=users.id ORDER BY auctions.end_time") or die(mysql_error());
@@ -14,6 +14,11 @@ class Charlie {
 				$rows[$row[auction_id]] = $row;
 			}
 			return $rows;
+		}
+		else if($choice == "auction")
+		{
+			$query = mysql_query("SELECT *, auctions.id AS auction_id, users.id AS user_id FROM auctions, users WHERE auctions.id='".mysql_escape_string($id)."' AND auctions.bidder_id=users.id ORDER BY auctions.end_time") or die(mysql_error());
+			return mysql_fetch_array($query, MYSQL_ASSOC);
 		}
 	}
 	function bid($id) {
@@ -117,14 +122,20 @@ class Charlie {
 		}
 		else if($query_split[1] == "auction")
 		{//Page: auction
-			$auction_id = $query_split[2];
-			$content = "specific auction ".$query_split[2];
+			$auction = $this->db_select("auction", $query_split[2]);
+			if($auction != "")
+			{//Auction exists
+				$content = $twig->render("pages/".$query_split[1].".html", array(
+					"row" => $auction
+				));
+			}
 		}
 		else if(file_exists("themes/pages/".$query_split[1].".html"))
 		{//Page: other
 			$content = $twig->render("pages/".$query_split[1].".html");
 		}
-		else
+		
+		if(!isset($content))
 		{//Page: not found
 			header("Status: 404 Not Found");
 			$content = $twig->render("pages/404.html");
