@@ -1,9 +1,8 @@
 <?php require("Charlie.php");
 
 if(1==1)
-{//logged in
-	$presence_data = array("name" => $user->$name);
-	echo $pusher->presence_auth($_POST[channel_name], $_POST[socket_id], md5(rand()), $presence_data);
+{//authorized
+	echo $pusher->socket_auth($_POST["channel_name"], $_POST["socket_id"]);
 }
 else
 {

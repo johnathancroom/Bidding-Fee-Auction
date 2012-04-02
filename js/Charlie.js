@@ -38,7 +38,7 @@ $(document).ready(function() {
 	}
 	
 	function update(id, price, end_time, highest_bidder) {
-		var auction = $("div[data-id="+id+"]");
+		var auction = $("[data-id="+id+"]");
 		
 		//Update Price
 		var priceElement = $(".price", auction);
