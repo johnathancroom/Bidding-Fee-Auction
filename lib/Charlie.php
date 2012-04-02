@@ -103,55 +103,47 @@ class Charlie {
 	}
 	function render() {
 		global $user, $loggedIn;
-		//Init
-		require("Twig/Autoloader.php");
-		Twig_Autoloader::register();
-		$twig = new Twig_Environment(new Twig_Loader_Filesystem("themes"));
 		
 		//Query
 		$query = $_SERVER["QUERY_STRING"];
 		$query_split = explode("/", $query);
-		if(!isset($query_split[1])) $query_split[1] = "home";
+		$page = $query_split[1];
+		if(!isset($page)) $page = "home";
 		
-		//Decide where to go
-		if($query_split[1] == "home")
-		{//Page: home
-			$content = $twig->render("pages/".$query_split[1].".html", array(
-				"auction_rows" => $this->db_select("auctions")
-			));
-		}
-		else if($query_split[1] == "auction")
-		{//Page: auction
-			$auction = $this->db_select("auction", $query_split[2]);
-			if($auction != "")
-			{//Auction exists
-				$content = $twig->render("pages/".$query_split[1].".html", array(
-					"row" => $auction
-				));
+		//Initialize render
+		if(file_exists("themes/pages/".$page.".php"))
+		{
+			$content_url = "themes/pages/".$page.".php";
+			
+			//Variables to include
+			if($page == "home")
+			{
+				//Page: home
+				$auction_rows = $this->db_select("auctions");
+			}
+			else if($page == "auction")
+			{
+				//Page: auction
+				$row = $this->db_select("auction", $query_split[2]);
+				if($row == "")
+				{
+					//Auction does not exist
+					$content_url = "";
+				}
 			}
 		}
-		else if(file_exists("themes/pages/".$query_split[1].".html"))
-		{//Page: other
-			$content = $twig->render("pages/".$query_split[1].".html");
-		}
 		
-		if(!isset($content))
-		{//Page: not found
+		//404
+		if(!isset($content_url))
+		{
 			header("Status: 404 Not Found");
-			$content = $twig->render("pages/404.html");
+			$content_url = "themes/pages/404.php";
 		}
 		
 		//Render
-		return
-			//Head 
-			$twig->render("includes/head.html", array(
-				"loggedIn" => $loggedIn,
-				"user" => $user
-			))
-			//Content
-			.$content
-			//Foot
-			.$twig->render("includes/foot.html");
+		include("themes/includes/head.php");
+		include($content_url);
+		include("themes/includes/foot.php");
 	}
 }
 

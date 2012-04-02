@@ -20,17 +20,17 @@
 
 <body>
 	<!-- Login -->
-	{% if not loggedIn %}
+	<? if(!$loggedIn): ?>
 		<form id="form_login" action="#" method="POST">
-			<input type="text" name="username" placeholder="Username">
+			<input type="text" name="username" placeholder="username">
 			<input type="password" name="password" placeholder="Password">
 			<input type="submit" id="submit_login" value="Login">
 		</form>
-	{% else %}
-		{{user.username}}
-		<span class="bids">{{user.bids}}</span> bids
+	<? else: ?>
+		<?= $user["username"]; ?>
+		<span class="bids"><?= $user["bids"]; ?></span> bids
 		<input type="button" id="logout" value="Logout">
-	{% endif %}
+	<? endif; ?>
 	
 	<!-- Separator -->
 	<hr>
