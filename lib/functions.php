@@ -6,7 +6,6 @@ if($request == "bid")
 {
 	$data = $charlie->bid($_GET["id"]);
 	echo json_encode($data);
-	//$pusher->trigger("presence-auction_data", "client-auction_data_updated", $_GET);
 }
 else if($request == "create")
 {
@@ -21,4 +20,8 @@ else if($request == "login")
 else if($request == "logout")
 {
 	$charlie->logout();
+}
+else if($request == "stripe")
+{
+	$charlie->stripe_charge($_GET["token"]);
 }

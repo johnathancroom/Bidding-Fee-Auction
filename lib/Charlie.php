@@ -101,17 +101,46 @@ class Charlie {
 	function logout() {
 		setcookie("login", "", time()-3600, "/");
 	}
+	function stripe_charge($token) {
+		global $user;
+		
+		//Get or create Stripe_id
+		if($user["stripe_id"] == null)
+		{
+			//Create Stripe customer
+			$customer = Stripe_Customer::create(array(
+				"card" => $token,
+				"description" => $user["username"],
+				"email" => $user["email"]
+			));
+			$stripe_id = $customer->id;
+			
+			//Save Stripe_id in database
+			mysql_query("UPDATE users SET stripe_id='".mysql_escape_string($customer->id)."' WHERE id='".mysql_escape_string($user["id"])."'");
+		}
+		else
+		{
+			$stripe_id = $user["stripe_id"];
+		}
+		
+		//Charge customer
+		Stripe_Charge::create(array(
+			"amount" => 100,
+			"currency" => "usd",
+			"customer" => $stripe_id
+		));
+	}
 	function render() {
 		global $user, $loggedIn;
 		
 		//Query
 		$query = $_SERVER["QUERY_STRING"];
 		$query_split = explode("/", $query);
-		$page = $query_split[1];
+		if(isset($query_split[1])) $page = $query_split[1];
 		if(!isset($page)) $page = "home";
 		
 		//Initialize render
-		if(file_exists("themes/pages/".$page.".php"))
+		if(isset($page) && file_exists("themes/pages/".$page.".php"))
 		{
 			$content_url = "themes/pages/".$page.".php";
 			
@@ -148,8 +177,7 @@ class Charlie {
 }
 
 //Config
-define("PATH", "/Applications/MAMP/htdocs/Bidding-Fee-Auction/");
-$config_file = PATH."config.php";
+$config_file = dirname(__DIR__)."/config.php";
 file_exists($config_file) or die("config.php file not loaded!");
 require($config_file);
 
@@ -159,5 +187,8 @@ $pusher = new Pusher("7da53c26a313d349592f", PUSHER_SECRET, "16968"); //key, sec
 
 $charlie = new Charlie();
 $charlie->db_init();
+
+require("Stripe/Stripe.php");
+Stripe::setApiKey(STRIPE_SECRET); //secret
 
 $user = $charlie->getLoggedInUser();

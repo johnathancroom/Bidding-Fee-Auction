@@ -22,7 +22,7 @@
 	<!-- Login -->
 	<? if(!$loggedIn): ?>
 		<form id="form_login" action="#" method="POST">
-			<input type="text" name="username" placeholder="username">
+			<input type="text" name="username" placeholder="Username">
 			<input type="password" name="password" placeholder="Password">
 			<input type="submit" id="submit_login" value="Login">
 		</form>

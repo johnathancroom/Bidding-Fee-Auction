@@ -7,3 +7,6 @@ define("MYSQL_PASS", "");
 
 //Pusher
 define("PUSHER_SECRET", "");
+
+//Stripe
+define("STRIPE_SECRET", "");

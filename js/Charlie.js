@@ -12,7 +12,7 @@ $(document).ready(function() {
 	
 	Pusher.channel_auth_endpoint = "/lib/Pusher_auth.php"; // Authentication for presence or private channels
 	var pusher = new Pusher("7da53c26a313d349592f");
-	var channel = pusher.subscribe("presence-auction_data");
+	var channel = pusher.subscribe("private-auction_data");
 	var refresh = pusher.subscribe("refresh");//temp
 	
 	channel.bind("pusher:subscription_succeeded", function(members) {			
@@ -25,6 +25,12 @@ $(document).ready(function() {
 	refresh.bind("refresh", function(data) {
 		location.reload(true);
 	})
+
+///////////////////////////////////////////////////////////////////////
+//STRIPE
+///////////////////////////////////////////////////////////////////////
+
+	Stripe.setPublishableKey("pk_Y2WqgxBuSSjrBgddNfEZZbAyYyDYT");
 	
 ///////////////////////////////////////////////////////////////////////
 //FUNCTIONS
@@ -126,6 +132,7 @@ $(document).ready(function() {
 	
 	var functions = "/lib/functions.php";
 	
+	//Bid
 	$(".button_bid").on("click", function() {
 		var id = $(this).parent().attr("data-id");
 		
@@ -160,12 +167,14 @@ $(document).ready(function() {
 		})
 	})
 	
+	//New Auction
 	$("#new_auction").on("click", function() {
 		$.get(functions, {
 			request: "create"
 		})
 	})
 	
+	//Login/out
 	$("#form_login").submit(function(e) {
 		var data = $(this).serialize();
 		$.get(functions, {
@@ -181,5 +190,35 @@ $(document).ready(function() {
 		$.get(functions, {
 			request: "logout"
 		})
+	})
+	
+	//Submit payment form
+	$("#payment_form").submit(function(e) {
+		$(".submit-button").attr("disabled", "disabled");
+		
+		Stripe.createToken({
+			number: $('.card-number').val(),
+	        cvc: $('.card-cvc').val(),
+	        exp_month: $('.card-expiry-month').val(),
+	        exp_year: $('.card-expiry-year').val()
+		}, function(status, response) {
+			if(response.error)
+			{
+				alert(response.error.message);
+			}
+			else
+			{
+				$("#payment_form").html("<img src='/themes/images/loader.gif'>");
+				
+				$.get(functions, {
+					request: "stripe",
+					token: response.id
+				}, function(data) {
+					$("#payment_form").html("Success!");
+				})
+			}
+		})
+		
+		e.preventDefault();
 	})
 })
