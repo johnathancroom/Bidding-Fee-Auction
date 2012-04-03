@@ -3,7 +3,7 @@ class Charlie {
 	function db_init() {
 		date_default_timezone_set("America/Phoenix");
 		mysql_connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASS) or die(mysql_error());
-		mysql_select_db("lindenbid") or die(mysql_error());
+		mysql_select_db("db137071_auctions") or die(mysql_error());
 	}
 	function db_select($choice, $id=null) {
 		if($choice == "auctions")
@@ -125,9 +125,10 @@ class Charlie {
 		
 		//Charge customer
 		Stripe_Charge::create(array(
-			"amount" => 100,
+			"amount" => 5000,
 			"currency" => "usd",
-			"customer" => $stripe_id
+			"customer" => $stripe_id,
+			"description" => "100 Bids"
 		));
 	}
 	function render() {
@@ -137,12 +138,20 @@ class Charlie {
 		$query = $_SERVER["QUERY_STRING"];
 		$query_split = explode("/", $query);
 		if(isset($query_split[1])) $page = $query_split[1];
+		if(isset($query_split[2])) $page2 = $query_split[2];
 		if(!isset($page)) $page = "home";
 		
 		//Initialize render
-		if(isset($page) && file_exists("themes/pages/".$page.".php"))
+		if(isset($page) && file_exists("themes/pages/$page.php"))
 		{
-			$content_url = "themes/pages/".$page.".php";
+			if(isset($page2) && file_exists("themes/pages/$page.$page2.php"))
+			{
+				$content_url = "themes/pages/$page.$page2.php";
+			}
+			else if(!isset($page2)) 
+			{
+				$content_url = "themes/pages/$page.php";
+			}
 			
 			//Variables to include
 			if($page == "home")
@@ -153,11 +162,11 @@ class Charlie {
 			else if($page == "auction")
 			{
 				//Page: auction
-				$row = $this->db_select("auction", $query_split[2]);
-				if($row == "")
+				$row = $this->db_select("auction", $page2);
+				if($row != "")
 				{
 					//Auction does not exist
-					$content_url = "";
+					$content_url = "themes/pages/$page.php";
 				}
 			}
 		}

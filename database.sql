@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 30, 2012 at 08:36 AM
+-- Generation Time: Apr 03, 2012 at 09:33 AM
 -- Server version: 5.5.9
 -- PHP Version: 5.3.6
 
@@ -25,15 +25,14 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for table `auctions`
 --
 
-DROP TABLE IF EXISTS `auctions`;
-CREATE TABLE IF NOT EXISTS `auctions` (
+CREATE TABLE `auctions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(65) DEFAULT NULL,
   `price` decimal(10,2) NOT NULL DEFAULT '0.00',
   `bidder_id` int(11) NOT NULL DEFAULT '0',
   `end_time` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=196 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=210 ;
 
 --
 -- Dumping data for table `auctions`
@@ -225,15 +224,29 @@ INSERT INTO `auctions` VALUES(183, 'Generated Name', 0.06, 2, 1332904451);
 INSERT INTO `auctions` VALUES(184, 'Generated Name', 0.01, 1, 1332909133);
 INSERT INTO `auctions` VALUES(185, 'Generated Name', 0.02, 2, 1332909175);
 INSERT INTO `auctions` VALUES(186, 'Generated Name', 0.00, 0, 1332909184);
-INSERT INTO `auctions` VALUES(187, 'Generated Name', 0.40, 2, 1333261702);
-INSERT INTO `auctions` VALUES(188, 'Generated Name', 0.28, 2, 1333261703);
-INSERT INTO `auctions` VALUES(189, 'Generated Name', 0.16, 2, 1333261705);
-INSERT INTO `auctions` VALUES(190, 'Generated Name', 0.06, 2, 1333261706);
+INSERT INTO `auctions` VALUES(187, 'Generated Name', 0.44, 2, 1333261702);
+INSERT INTO `auctions` VALUES(188, 'Generated Name', 0.35, 1, 1333261703);
+INSERT INTO `auctions` VALUES(189, 'Generated Name', 0.23, 1, 1333261705);
+INSERT INTO `auctions` VALUES(190, 'Generated Name', 0.09, 1, 1333261706);
 INSERT INTO `auctions` VALUES(191, 'Generated Name', 0.01, 1, 1333261707);
 INSERT INTO `auctions` VALUES(192, 'Generated Name', 0.01, 1, 1333261711);
 INSERT INTO `auctions` VALUES(193, 'Generated Name', 0.01, 1, 1333089446);
 INSERT INTO `auctions` VALUES(194, 'Generated Name', 0.03, 2, 1333089664);
 INSERT INTO `auctions` VALUES(195, 'Generated Name', 0.21, 1, 1333118525);
+INSERT INTO `auctions` VALUES(196, 'Generated Name', 0.03, 1, 1333126967);
+INSERT INTO `auctions` VALUES(197, 'Generated Name', 0.01, 1, 1333521685);
+INSERT INTO `auctions` VALUES(198, 'Generated Name', 0.01, 1, 1333546886);
+INSERT INTO `auctions` VALUES(199, 'Generated Name', 0.01, 1, 1333550487);
+INSERT INTO `auctions` VALUES(200, 'Generated Name', 0.01, 1, 1333554088);
+INSERT INTO `auctions` VALUES(201, 'Generated Name', 0.03, 1, 1333503689);
+INSERT INTO `auctions` VALUES(202, 'Generated Name', 0.12, 2, 1333474891);
+INSERT INTO `auctions` VALUES(203, 'Generated Name', 0.10, 2, 1333478492);
+INSERT INTO `auctions` VALUES(204, 'Generated Name', 0.01, 1, 1333561293);
+INSERT INTO `auctions` VALUES(205, 'Generated Name', 0.03, 1, 1333489294);
+INSERT INTO `auctions` VALUES(206, 'Generated Name', 0.01, 1, 1333554096);
+INSERT INTO `auctions` VALUES(207, 'Generated Name', 0.01, 1, 1333644126);
+INSERT INTO `auctions` VALUES(208, 'Generated Name', 0.01, 1, 1333392432);
+INSERT INTO `auctions` VALUES(209, 'Generated Name', 0.01, 1, 1333392600);
 
 -- --------------------------------------------------------
 
@@ -241,15 +254,14 @@ INSERT INTO `auctions` VALUES(195, 'Generated Name', 0.21, 1, 1333118525);
 -- Table structure for table `history`
 --
 
-DROP TABLE IF EXISTS `history`;
-CREATE TABLE IF NOT EXISTS `history` (
+CREATE TABLE `history` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `auction_id` int(11) DEFAULT NULL,
   `bidder_id` int(11) DEFAULT NULL,
   `price` decimal(10,2) DEFAULT NULL,
   `time` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11238 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11299 ;
 
 --
 -- Dumping data for table `history`
@@ -11492,6 +11504,67 @@ INSERT INTO `history` VALUES(11234, 187, 2, 0.40, 1333121550);
 INSERT INTO `history` VALUES(11235, 188, 2, 0.28, 1333121551);
 INSERT INTO `history` VALUES(11236, 189, 2, 0.16, 1333121552);
 INSERT INTO `history` VALUES(11237, 190, 2, 0.06, 1333121553);
+INSERT INTO `history` VALUES(11238, 188, 1, 0.29, 1333125040);
+INSERT INTO `history` VALUES(11239, 189, 1, 0.17, 1333125043);
+INSERT INTO `history` VALUES(11240, 190, 1, 0.07, 1333125045);
+INSERT INTO `history` VALUES(11241, 189, 2, 0.18, 1333126919);
+INSERT INTO `history` VALUES(11242, 188, 2, 0.30, 1333126920);
+INSERT INTO `history` VALUES(11243, 196, 1, 0.01, 1333126934);
+INSERT INTO `history` VALUES(11244, 196, 2, 0.02, 1333126937);
+INSERT INTO `history` VALUES(11245, 187, 1, 0.41, 1333126941);
+INSERT INTO `history` VALUES(11246, 188, 1, 0.31, 1333126942);
+INSERT INTO `history` VALUES(11247, 189, 1, 0.19, 1333126948);
+INSERT INTO `history` VALUES(11248, 196, 1, 0.03, 1333126952);
+INSERT INTO `history` VALUES(11249, 187, 2, 0.42, 1333128043);
+INSERT INTO `history` VALUES(11250, 188, 2, 0.32, 1333128044);
+INSERT INTO `history` VALUES(11251, 189, 2, 0.20, 1333128045);
+INSERT INTO `history` VALUES(11252, 189, 1, 0.21, 1333131146);
+INSERT INTO `history` VALUES(11253, 188, 1, 0.33, 1333131147);
+INSERT INTO `history` VALUES(11254, 187, 1, 0.43, 1333131149);
+INSERT INTO `history` VALUES(11255, 189, 2, 0.22, 1333132243);
+INSERT INTO `history` VALUES(11256, 188, 2, 0.34, 1333132244);
+INSERT INTO `history` VALUES(11257, 187, 2, 0.44, 1333132245);
+INSERT INTO `history` VALUES(11258, 190, 2, 0.08, 1333132308);
+INSERT INTO `history` VALUES(11259, 190, 1, 0.09, 1333132376);
+INSERT INTO `history` VALUES(11260, 189, 1, 0.23, 1333132378);
+INSERT INTO `history` VALUES(11261, 188, 1, 0.35, 1333132379);
+INSERT INTO `history` VALUES(11262, 197, 1, 0.01, 1333388602);
+INSERT INTO `history` VALUES(11263, 201, 1, 0.01, 1333388605);
+INSERT INTO `history` VALUES(11264, 206, 1, 0.01, 1333388606);
+INSERT INTO `history` VALUES(11265, 203, 1, 0.01, 1333392031);
+INSERT INTO `history` VALUES(11266, 202, 1, 0.01, 1333392055);
+INSERT INTO `history` VALUES(11267, 205, 1, 0.01, 1333392200);
+INSERT INTO `history` VALUES(11268, 200, 1, 0.01, 1333392281);
+INSERT INTO `history` VALUES(11269, 199, 1, 0.01, 1333392291);
+INSERT INTO `history` VALUES(11270, 207, 1, 0.01, 1333392409);
+INSERT INTO `history` VALUES(11271, 208, 1, 0.01, 1333392417);
+INSERT INTO `history` VALUES(11272, 198, 1, 0.01, 1333392515);
+INSERT INTO `history` VALUES(11273, 204, 1, 0.01, 1333392518);
+INSERT INTO `history` VALUES(11274, 209, 1, 0.01, 1333392585);
+INSERT INTO `history` VALUES(11275, 203, 2, 0.02, 1333393549);
+INSERT INTO `history` VALUES(11276, 202, 2, 0.02, 1333393553);
+INSERT INTO `history` VALUES(11277, 205, 2, 0.02, 1333393554);
+INSERT INTO `history` VALUES(11278, 201, 2, 0.02, 1333393557);
+INSERT INTO `history` VALUES(11279, 205, 1, 0.03, 1333400458);
+INSERT INTO `history` VALUES(11280, 203, 1, 0.03, 1333400493);
+INSERT INTO `history` VALUES(11281, 201, 1, 0.03, 1333400495);
+INSERT INTO `history` VALUES(11282, 202, 1, 0.03, 1333400529);
+INSERT INTO `history` VALUES(11283, 203, 2, 0.04, 1333400766);
+INSERT INTO `history` VALUES(11284, 202, 2, 0.04, 1333400767);
+INSERT INTO `history` VALUES(11285, 203, 1, 0.05, 1333400776);
+INSERT INTO `history` VALUES(11286, 202, 1, 0.05, 1333400777);
+INSERT INTO `history` VALUES(11287, 203, 2, 0.06, 1333400779);
+INSERT INTO `history` VALUES(11288, 202, 2, 0.06, 1333400780);
+INSERT INTO `history` VALUES(11289, 202, 1, 0.07, 1333400785);
+INSERT INTO `history` VALUES(11290, 202, 2, 0.08, 1333400788);
+INSERT INTO `history` VALUES(11291, 203, 1, 0.07, 1333410905);
+INSERT INTO `history` VALUES(11292, 202, 1, 0.09, 1333410906);
+INSERT INTO `history` VALUES(11293, 203, 2, 0.08, 1333426853);
+INSERT INTO `history` VALUES(11294, 202, 2, 0.10, 1333426854);
+INSERT INTO `history` VALUES(11295, 203, 1, 0.09, 1333427756);
+INSERT INTO `history` VALUES(11296, 202, 1, 0.11, 1333427757);
+INSERT INTO `history` VALUES(11297, 202, 2, 0.12, 1333427759);
+INSERT INTO `history` VALUES(11298, 203, 2, 0.10, 1333427760);
 
 -- --------------------------------------------------------
 
@@ -11499,12 +11572,13 @@ INSERT INTO `history` VALUES(11237, 190, 2, 0.06, 1333121553);
 -- Table structure for table `users`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
+CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(65) DEFAULT NULL,
+  `email` varchar(256) DEFAULT NULL,
   `password` varchar(32) DEFAULT NULL,
   `bids` int(11) DEFAULT NULL,
+  `stripe_id` varchar(18) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
@@ -11512,6 +11586,6 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` VALUES(0, 'Nobody', NULL, 0);
-INSERT INTO `users` VALUES(1, 'john', '3ffe9c777d15dae7ab96c5daef7dc16a', 1000);
-INSERT INTO `users` VALUES(2, 'test', '3ffe9c777d15dae7ab96c5daef7dc16a', 1000);
+INSERT INTO `users` VALUES(0, 'Nobody', NULL, NULL, 0, NULL);
+INSERT INTO `users` VALUES(1, 'john', 'johnathancroom@gmail.com', '3ffe9c777d15dae7ab96c5daef7dc16a', 980, 'cus_guMBm7lhIsn0yW');
+INSERT INTO `users` VALUES(2, 'test', 'test@email.com', '3ffe9c777d15dae7ab96c5daef7dc16a', 987, NULL);

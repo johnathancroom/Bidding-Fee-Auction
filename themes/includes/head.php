@@ -4,13 +4,6 @@
 	<title>Bidding Fee Auctions</title>
 	<meta charset="utf-8">
 	<style type="text/css">
-		li {
-			background-color: #eee;
-			margin: 5px 0;
-		}
-		li input {
-			float: right;
-		}
 		.ending {
 			color: red;
 		}
