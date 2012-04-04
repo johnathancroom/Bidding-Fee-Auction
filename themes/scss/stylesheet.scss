@@ -29,14 +29,6 @@ nav {
 	margin: 0 2px 0 0;
 	@include prefix(border-radius, 2px);
 }
-.input_login {
-	height: 18px;
-	width: 180px;
-	padding: 0 4px 2px 4px;
-	border: 1px solid #d1d1d1;
-	&:focus {
-	}
-}
 #submit_login,
 #logout {
 	height: 22px;
@@ -46,6 +38,14 @@ nav {
 	text-shadow: 0px 1px 0px rgba(0,0,0, .1);
 	@include box-shadow((inset 0px 0px 3px 0px rgba(255,255,255, .2),
 						0px 1px 0px 0px #252525));
+}
+.input_login {
+	height: 18px;
+	width: 180px;
+	padding: 0 4px 2px 4px;
+	border: 1px solid #d1d1d1;
+	&:focus {
+	}
 }
 #new_auction {
 	float: right;
@@ -106,14 +106,14 @@ img {
 		@include background2;
 	}
 }
+.ending {
+	color: red;
+}
 .price {
 	color: #333;
 	font-size: 1.8em;
 	font-weight: bold;
 	margin-top: 6px;
-}
-.ending {
-	color: red;
 }
 .highest_bidder {
 	color: $bidStroke/1.6;

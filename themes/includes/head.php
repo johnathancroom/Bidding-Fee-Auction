@@ -8,7 +8,7 @@
 <body>
 	<nav>
 		<!-- Login -->
-		<div id="login">
+		<div id="log">
 		<? if(!$loggedIn): ?>
 			<form id="form_login" action="#" method="POST">
 				<input class="input_login" type="text" name="username" placeholder="Username">
