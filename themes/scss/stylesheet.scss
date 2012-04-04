@@ -1,0 +1,168 @@
+@import "reset";
+@import "fontface";
+@import "mixins";
+
+$btnBase: #3e9fb2;
+$bidTXT: #fff;
+$bidStroke: #3d7d89;
+
+* {
+	position: relative;
+}
+body {
+	font-family: Calibri, Helvetica, sans-serif;
+	max-width: 1000px;
+	margin: 0 auto;
+	background: rgba(0,0,0, .02);
+}
+nav {
+	height: 20px;
+	margin:0 0 20px 0;
+	padding: 6px 6px 8px 6px;
+	background: #333;
+	color: #eee;
+	@include box-shadow((0px 4px 0px 0px rgba(0,0,0, .06)));
+}
+.input_login,
+#submit_login,
+#logout {
+	margin: 0 2px 0 0;
+	@include prefix(border-radius, 2px);
+}
+.input_login {
+	height: 18px;
+	width: 180px;
+	padding: 0 4px 2px 4px;
+	border: 1px solid #d1d1d1;
+	&:focus {
+	}
+}
+#submit_login,
+#logout {
+	height: 22px;
+	border: none;
+	background: $bidStroke;
+	color: white;
+	text-shadow: 0px 1px 0px rgba(0,0,0, .1);
+	@include box-shadow((inset 0px 0px 3px 0px rgba(255,255,255, .2),
+						0px 1px 0px 0px #252525));
+}
+#new_auction {
+	float: right;
+}
+.window {
+	display: inline-block;
+	text-align: center;
+	background: #fff;
+	margin: 0 8px 12px 0;
+	width: 180px;
+	color: #333;
+	border: 1px solid #d1d1d1;
+	@include box-shadow((inset 0px -2px 6px 0px rgba(0,0,0, .08)));
+}
+.retail,
+.highest_bidder {
+	font-size: .75em;
+}
+.item_name {
+	color: #444;
+	display: block;
+	height: 30px;
+	margin: 9px auto 0 auto;
+	font-weight: normal;
+	line-height:  0.95em;
+	text-decoration: none;
+	font-size: .9em;
+	&:hover {
+	color: $btnBase/1.2;
+/*	color: #333;
+	text-shadow: -.5px -.5px .5px rgba(0,0,0, .3),
+				.5px -.5px .5px rgba(0,0,0, .3),
+				-.5px .5px .5px rgba(0,0,0, .3),
+				.5px .5px .5px rgba(0,0,0, .3);*/
+	}
+}
+img {
+	display: block;
+	margin: 2px auto 0 auto;
+	max-width: 100%;
+}
+.retail {
+	color: #a3a3a3;
+	top: -2px;
+}
+.end_time {
+	font-size: 1.3em;
+	padding: 2px 0;
+	@include background1;
+	@include box-shadow((0px 1px 0px 0px rgba(0,0,0, .1)));
+	&:before {
+		content:"";
+		left: 0;
+		position: absolute;
+		height: 1px;
+		top: 0;
+		width: 100%;
+		@include background2;
+	}
+}
+.price {
+	color: #333;
+	font-size: 1.8em;
+	font-weight: bold;
+	margin-top: 6px;
+}
+.ending {
+	color: red;
+}
+.highest_bidder {
+	color: $bidStroke/1.6;
+}
+.button_bid {
+	width: 58px;
+	margin: 10px auto 12px auto;
+	color: $bidTXT;
+	font-size: 1.1em;
+	padding: 4px 0 3px 0;
+	letter-spacing: .08em;
+	text-shadow:-1px -1px 0px $bidStroke,
+				 1px -1px 0px $bidStroke,
+				-1px 1px 0px $bidStroke,
+				 1px 1px 0px $bidStroke,
+				 0px 2px 0px ($bidStroke/1.1);
+	background: $btnBase;
+	border: 1px solid $bidStroke;
+	cursor: pointer;
+	@include prefix(border-radius, 3px);
+	@include box-shadow((inset -.5px 1px 0px 0px rgba(255,255,255, .35),
+						 inset	0px 15px 10px -10px rgba(255,255,255, .1),
+						 inset	0px -12px 10px -8px rgba(0,0,0, .25),
+								0px 1px 0px 0px ($bidStroke/2.5)));
+	&:hover,
+	&:focus {
+		border: 1px solid ($bidStroke/1.15);
+	}
+	&:hover,
+	&:focus {
+		text-shadow:-1px -1px 0px $bidStroke*1.2,
+					 1px -1px 0px $bidStroke*1.2,
+					-1px 1px 0px $bidStroke/1.05,
+					 1px 1px 0px $bidStroke/1.05;
+		@include box-shadow((inset -.5px 1.5px 0px 0px rgba(255,255,255, .4),
+						 inset	0px 15px 10px -10px rgba(255,255,255, .25),
+						 inset	0px -12px 10px -8px rgba(0,0,0, .25),
+						 inset .5px -1px 0px 0px rgba(0,0,0, .18),
+								0px 1px 0px 0px ($bidStroke/2.5)));
+	}
+	&:active {
+		text-shadow:-1px -1px 0px $bidStroke*1.05,
+					 1px -1px 0px $bidStroke*1.05,
+					-1px 1px 0px $bidStroke*1.2,
+					 1px 1px 0px $bidStroke*1.2;
+		@include box-shadow((inset -.5px 1px 0px 0px rgba(255,255,255, .3),
+						 inset	0px -15px 10px -10px rgba(255,255,255, .1),
+						 inset	0px 12px 10px -8px rgba(0,0,0, .18),
+						 inset .5px -1px 0px 0px rgba(255,255,255, .05),
+								0px 1px 0px 0px ($bidStroke/2.5)));
+	}
+}

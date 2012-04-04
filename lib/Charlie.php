@@ -73,7 +73,7 @@ class Charlie {
 		$query = mysql_query("INSERT INTO auctions (name, end_time) 
 			VALUES (
 				'Generated Name',
-				'".mysql_escape_string(time()+10)."'
+				'".mysql_escape_string(time()+3600*24)."'
 			)") or die(mysql_error());
 	}
 	function getLoggedInUser() {
