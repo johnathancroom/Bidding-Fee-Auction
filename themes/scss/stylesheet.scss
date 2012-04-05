@@ -7,45 +7,67 @@ $bidTXT: #fff;
 $bidStroke: #3d7d89;
 
 * {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
 	position: relative;
 }
 body {
 	font-family: Calibri, Helvetica, sans-serif;
-	max-width: 1000px;
-	margin: 0 auto;
 	background: rgba(0,0,0, .02);
 }
-nav {
-	height: 20px;
-	margin:0 0 20px 0;
-	padding: 6px 6px 8px 6px;
+.topper {
+	padding: 6px;
 	background: #333;
-	color: #eee;
 	@include box-shadow((0px 4px 0px 0px rgba(0,0,0, .06)));
 }
-.input_login,
-#submit_login,
-#logout {
-	margin: 0 2px 0 0;
+.container { 
+	margin: 0 auto;
+	max-width: 1018px;
+/*	border: 1px solid green;*/
+}
+.sidebar {
+	background: /*#e8f4f7*/ #333;
+	padding: 0 30px;
+	width: 240px;
+	position: fixed;
+	@include box-shadow((0px -32px 0px 0px #333,
+						0px 4px 0px 0px rgba(0,0,0, .06)));
+/*	border: 1px solid green;*/
+}
+.logo {
+	padding: 90px;
+	background: rgba(0,0,0, .1);
+	margin: 0 0 32px 0;
+}
+.user_functions input {
+	display: block;
+	margin: 8px 0;
 	@include prefix(border-radius, 2px);
 }
-#submit_login,
-#logout {
-	height: 22px;
-	border: none;
-	background: $bidStroke;
-	color: white;
-	text-shadow: 0px 1px 0px rgba(0,0,0, .1);
-	@include box-shadow((inset 0px 0px 3px 0px rgba(255,255,255, .2),
-						0px 1px 0px 0px #252525));
-}
-.input_login {
-	height: 18px;
+.user_functions input[type=text],
+.user_functions input[type=password] {
 	width: 180px;
-	padding: 0 4px 2px 4px;
+	padding: 4px;
 	border: 1px solid #d1d1d1;
 	&:focus {
+		outline: 0;
+		@include box-shadow((inset 0px 0px 3px 0px $btnBase));
 	}
+}
+.user_functions input[type=button],
+.user_functions input[type=submit] {
+	border: none;
+	background: $bidStroke;
+	color: #fff;
+	padding: 5px;
+	text-shadow: 0px 1px 0px rgba(0,0,0, .1);
+	@include box-shadow((inset 0px 0px 3px 0px rgba(255,255,255, .2),
+							   0px 1px 0px 0px #252525));
+}
+.content {
+	margin-left: 240px + 12px;
+	margin-top: 20px;
 }
 #new_auction {
 	float: right;
@@ -54,7 +76,7 @@ nav {
 	display: inline-block;
 	text-align: center;
 	background: #fff;
-	margin: 0 8px 12px 0;
+	margin:0 0 12px 8px;
 	width: 180px;
 	color: #333;
 	border: 1px solid #d1d1d1;

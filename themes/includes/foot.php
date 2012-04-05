@@ -1,3 +1,5 @@
+		</section>
+	</section>
 	<!-- External JavaScript -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 	<script src="https://js.stripe.com/v1/" type="text/javascript"></script>

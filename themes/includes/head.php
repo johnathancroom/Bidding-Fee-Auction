@@ -6,19 +6,25 @@
 	<link rel="stylesheet" type="text/css" href="/themes/css/stylesheet.css">
 </head>
 <body>
-	<nav>
-		<!-- Login -->
-		<div id="log">
-		<? if(!$loggedIn): ?>
-			<form id="form_login" action="#" method="POST">
-				<input class="input_login" type="text" name="username" placeholder="Username">
-				<input class="input_login" type="password" name="password" placeholder="Password">
-				<input id="submit_login" type="submit" value="Login">
-			</form>
-		<? else: ?>
-			<?= $user["username"]; ?>
-			<span class="bids"><?= $user["bids"]; ?></span> bids
-			<input id="logout" type="button" value="Logout">
-		<? endif; ?>
-		</div>
-	</nav>
+	<div class="topper"></div>
+	<section class="container">
+		<header class="sidebar">
+		<div class="logo"></div>
+			<section class="user_functions">
+				<!-- Login -->
+				<div class="container">
+				<? if(!$loggedIn): ?>
+					<form id="form_login" action="#" method="POST">
+						<input type="text" name="username" placeholder="Username">
+						<input type="password" name="password" placeholder="Password">
+						<input id="submit_login" type="submit" value="Login">
+					</form>
+				<? else: ?>
+					<?= $user["username"]; ?>
+					<span class="bids"><?= $user["bids"]; ?></span> bids
+					<input id="logout" type="button" value="Logout">
+				<? endif; ?>
+				</div>
+			</section>
+		</header>
+		<section class="content">
