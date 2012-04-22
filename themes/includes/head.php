@@ -9,7 +9,12 @@
 	<div class="topper"></div>
 	<section class="container">
 		<header class="sidebar">
-		<div class="logo"></div>
+  		<div class="logo"></div>
+  		<nav class="nav">
+  		  <a class="home" href="#">home</a>
+  		  <a class="about" href="#">about</a>
+  		  <a class="help" href="#">help</a>
+  		</nav>
 			<section class="user_functions">
 				<!-- Login -->
 				<div class="container">
@@ -26,5 +31,6 @@
 				<? endif; ?>
 				</div>
 			</section>
-		</header>
+			<div class="user_functions_decor"></div>
+  		</header>
 		<section class="content">
