@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  name: MyString
+  price: 9.99
+  bidder: MyString
+  end_time: 1
+
+two:
+  id: 1
+  name: MyString
+  price: 9.99
+  bidder: MyString
+  end_time: 1
