@@ -2,7 +2,7 @@ class AuctionsController < ApplicationController
   # GET /auctions
   # GET /auctions.json
   def index
-    @auctions = Auction.all
+    @auctions = Auction.find(:all, :conditions => "end_time >= "+Time.new.to_i.to_s)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,7 +25,7 @@ class AuctionsController < ApplicationController
   # GET /auctions/new
   # GET /auctions/new.json
   def new
-    if 1 == 2 # auth for admin here
+    if 1 == 2 # auth for admin
       render_404
     else
       @auction = Auction.new
@@ -54,6 +54,7 @@ class AuctionsController < ApplicationController
   # POST /auctions.json
   def create
     @auction = Auction.new(params[:auction])
+    @auction.end_time = Time.new.to_i + 3600*24 # Set end_time 24 hours ahead of now
 
     respond_to do |format|
       if @auction.save

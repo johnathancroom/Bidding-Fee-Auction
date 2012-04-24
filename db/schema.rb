@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120421174859) do
+ActiveRecord::Schema.define(:version => 20120424030238) do
 
   create_table "auctions", :force => true do |t|
     t.integer  "listing_id"
-    t.integer  "price"
-    t.integer  "user_id"
+    t.integer  "price",      :default => 0
+    t.integer  "user_id",    :default => 0
     t.integer  "end_time"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   add_index "auctions", ["id"], :name => "index_auctions_on_id", :unique => true

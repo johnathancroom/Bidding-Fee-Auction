@@ -3,5 +3,5 @@ class Auction < ActiveRecord::Base
   belongs_to :listing
   belongs_to :user
   
-  validates :price, :user_id, :end_time, :presence => true
+  validates :price, :listing_id, :presence => true
 end
