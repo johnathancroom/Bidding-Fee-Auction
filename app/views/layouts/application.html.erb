@@ -7,33 +7,40 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div class="topper"></div>
 	<section class="container">
 		<header class="sidebar">
   		<div class="logo"></div>
   		<nav class="nav">
-  		  <a class="home" href="#">Home</a>
-  		  <a class="about" href="#">About</a>
-  		  <a class="help" href="#">Help</a>
+  		  <a class="selected" href="#">Home</a>
+  		  <a href="#">About</a>
+  		  <a href="#">Help</a>
   		</nav>
 			<section class="user_functions">
 				<!-- Login -->
 				<div class="container">
 <!--				<? if(!$loggedIn): ?>-->
 					<form id="form_login" action="#" method="POST">
-						<input type="text" name="username" placeholder="Username">
+						<input type="text" name="username" class="error" placeholder="Username">
 						<input type="password" name="password" placeholder="Password">
-						<input id="submit_login" type="submit" value="Login">
+						<a href="#">Forgot password?</a>
+						<input id="submit_login" type="submit" value="Log in">
 					</form>
 <!--				<? else: ?>
 					<?= $user["username"]; ?>-->
 					<span class="bids"><!--<?= $user["bids"]; ?>--></span> bids
-					<input id="logout" type="button" value="Logout">
+					<input id="logout" type="button" value="Log out">
 <!--				<? endif; ?>-->
 				</div>
 			</section>
 			<div class="user_functions_decor"></div>
   		</header>
+  	<section class="filter_bar">
+  	  <section class="filters">
+  	    <a class="gridded" href="#"></a>
+  	    <a class="listed" href="#"></a>
+  	    <input type="text" name="search" placeholder="Search auctions">
+  	  </section>
+  	</section>
 		<section class="content">
 	    <%= yield %>
 		</section>
