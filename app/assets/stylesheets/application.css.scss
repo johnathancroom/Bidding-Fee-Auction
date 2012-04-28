@@ -131,6 +131,11 @@ body {
   color: #317d89;
   font-size: .75em;
   text-decoration: none;
+  &:hover,
+  &:focus {
+    color: #317d89*1.15;
+    text-decoration: underline;
+  }
 }
 .user_functions input[type=text],
 .user_functions input[type=password,
@@ -141,7 +146,6 @@ body {
 	padding: 4px 2px 2px 6px;
 	width: 170px;
 	&:focus {
-		border: 1px solid $bidStroke;
 		@include box-shadow((inset 0px 0px 3px 0px $btnBase));
 		outline: 0;
 	}
@@ -157,13 +161,30 @@ body {
 .user_functions input[type=submit] {
   background: #fafafa;
 	border: 1px solid #d1d1d1;
+  @include prefix(border-radius, 3px);
+  @include box-shadow((inset 0px -14px 10px -10px rgba(0,0,0, .075),
+                       inset 0px 3px 0px 0px rgba(255,255,255, .6)));
 	color: rgba(0,0,0, .6);
 	font-size: .9em;
 	padding: 3px 10px;
-	@include prefix(border-radius, 3px);
-	@include box-shadow((inset 0px -14px 10px -10px rgba(0,0,0, .075),
-	                     inset 0px 3px 0px 0px rgba(255,255,255, .6)));
 	text-shadow: 0px 1px 0px #fff;
+  &:focus,
+  &:hover {
+  	color: rgba(0,0,0, .55);
+  	border: 1px solid #c6c6c6;
+    @include box-shadow((inset 0px -18px 12px -10px rgba(0,0,0, .09),
+                         inset 0px -1px 0px 0px rgba(0,0,0, .05),
+                         inset 0px -3px 0px 0px rgba(255,255,255, .3),
+                         inset 0px 3px 0px 0px rgba(255,255,255, .1)));
+    text-shadow: 0px 2px 0px rgba(255,255,255, .7);
+  }
+  &:active {
+    @include box-shadow((inset 0px 14px 8px -8px rgba(0,0,0, .075),
+                         inset 0px -1px 0px 0px rgba(0,0,0, .1),
+                         inset 0px -3px 0px 0px rgba(255,255,255, 1),
+                         inset 0px 3px 0px 0px rgba(255,255,255, .6)));
+    text-shadow: 0px -1px 0px #fff;
+  }
 }
 .user_functions input[type=submit] {
   bottom: 0;
@@ -189,13 +210,94 @@ body {
 }
 .filters input[type=text]{
   background: url(search-icon.png) no-repeat 4px 2px;
+  background-color: #fff;
   @include prefix(border-radius, 10px);
+  @include box-shadow(( 0px 3px 0px 0px rgba(255,255,255, .6)));
   margin: -10px 6px 0 0;
   padding: 2px 0px 3px 20px;
   position: absolute;
   right: 0px;
   font-size: .67em;
   width: 180px;
+}
+.gridded,
+.gridded:before,
+.gridded:after,
+.listed,
+.listed:before,
+.listed:after{
+  background: #fff;
+  border: 1px solid #b4b4b4;
+  height: 6px;
+  position: absolute;
+  width: 6px;
+}
+.gridded,
+.listed {
+  background: none;
+  border-color: transparent;
+  height: 15px;
+  left: 12px;
+  top: 8px;
+  width: 15px;
+  &:before,
+  &:after {
+    content: "";
+    height: 4px;
+    left: -1px;
+    top: -10px;
+    width: 4px;
+    @include box-shadow(( 0px 9px 0px -2px #fff,
+                          0px 9px 0px -1px rgba(0,0,0, .05),  /*edge shade*/
+                          0px 9px 0px -1px #fff,
+                          0px 9px 0px 0px #b4b4b4,            /*faux border*/
+                    inset 0px 0px 0px 1px rgba(0,0,0, .05)));
+  }
+  &:after {
+    left: 8px;
+  }
+  &:hover:before,
+  &:hover:after {
+    background: #fff;
+    border-color: $btnBase*1.1;
+    @include box-shadow(( 0px 9px 0px -2px #fff,
+                          0px 9px 0px -1px rgba(62,159,178, .5),  /*inset shade*/
+                          0px 9px 0px -1px #fff,
+                          0px 9px 0px 0px $btnBase*1.1,            /*faux border*/
+                          0px 9px 2px 0px rgba(0,0,0, .2),
+                    inset 0px 0px 0px 1px rgba(62,159,178, .5),   /*inset shade*/
+                          0px 0px 2px 0px rgba(0,0,0, .2)));
+  }
+}
+.gridded:before,
+.gridded:after {
+  top: -1px;
+}
+.listed {
+  left: 38px;
+  &:before,
+  &:after {
+    background: #c9c9c9;
+    border-color: transparent;
+    content: "";
+    height: 0px;
+    left: -2px;
+    top: -1px;
+    width: 14px;
+    @include box-shadow(( 0px 8px 0px 0px #c9c9c9,
+                          0px 1px 0px 0px #fff,
+                          0px 9px 0px 0px #fff));
+  }
+  &:after {
+    top: 3px;
+  }
+  &:hover:before,
+  &:hover:after {
+    background:  $btnBase*1.1;
+    @include box-shadow(( 0px 8px 0px 0px $btnBase*1.15,
+                          0px 8px 2px 0px rgba(0,0,0, .1),
+                          0px 0px 2px 0px rgba(0,0,0, .1)));
+  }
 }
 #new_auction {
 	float: right;
