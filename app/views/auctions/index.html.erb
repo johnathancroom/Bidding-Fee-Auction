@@ -1,0 +1,9 @@
+<!--<h1>Listing auctions</h1>-->
+
+<% @auctions.each do |auction| %>
+  <%= render :partial => 'bidwindow', :locals => { :auction => auction } %>
+<% end %>
+
+<br>
+
+<%= link_to 'New Auction', new_auction_path %>

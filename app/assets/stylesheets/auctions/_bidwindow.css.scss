@@ -1,0 +1,112 @@
+.window {
+	background: #fff;
+	border: 1px solid #d1d1d1;
+	@include box-shadow((inset 0px -2px 6px 0px rgba(0,0,0, .08)));
+	color: #333;
+	display: inline-block;
+	margin:0 8px 12px 0;
+	text-align: center;
+	width: 180px;
+}
+.retail,
+.highest_bidder {
+	font-size: .75em;
+}
+.item_name {
+	color: #444;
+	display: block;
+	font-weight: normal;
+	font-size: .9em;
+	height: 30px;
+	line-height:  0.95em;
+	margin: 9px auto 0 auto;
+	text-decoration: none;
+	&:hover {
+	  color: $btnBase/1.4;
+	}
+}
+img {
+	display: block;
+	margin: 2px auto 0 auto;
+	max-width: 100%;
+}
+.retail {
+	color: #a3a3a3;
+	top: -2px;
+}
+.end_time {
+  @include background1;
+  @include box-shadow((0px 1px 0px 0px rgba(0,0,0, .1)));
+	font-size: 1.3em;
+	padding: 4px 0;
+	&:before {
+    @include background2;
+		content:"";
+		height: 1px;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+}
+.ending {
+	color: red;
+}
+.price {
+	color: #333;
+	font-weight: bold;
+	font-size: 1.8em;
+	margin-top: 12px;
+}
+.highest_bidder {
+	color: $bidStroke/1.6;
+}
+.button_bid {
+	background: $btnBase;
+	border: 1px solid $bidStroke;
+  @include prefix(border-radius, 3px);
+  @include box-shadow((inset -.5px 1px 0px 0px rgba(255,255,255, .35),
+            					 inset	0px 15px 10px -10px rgba(255,255,255, .1),
+            					 inset	0px -12px 10px -8px rgba(0,0,0, .25),
+            						    	0px 1px 0px 0px ($bidStroke/2.5)));  
+	color: $bidTXT;
+	cursor: pointer;
+	font-size: 1.1em;
+	letter-spacing: .08em;
+	margin: 4px auto 12px auto;
+	padding: 4px 0 2px 0;
+  text-shadow:-1px -1px 0px $bidStroke,
+      				 1px -1px 0px $bidStroke,
+      				-1px 1px 0px $bidStroke,
+      				 1px 1px 0px $bidStroke,
+      				 0px 2px 0px ($bidStroke/1.1);
+  text-transform: uppercase;
+	width: 58px;
+	&:hover,
+	&:focus {
+		border: 1px solid ($bidStroke/1.15);
+	}
+	&:hover,
+	&:focus {
+    @include box-shadow((inset -.5px 1.5px 0px 0px rgba(255,255,255, .4),
+                				 inset	0px 15px 10px -10px rgba(255,255,255, .25),
+                				 inset	0px -12px 10px -8px rgba(0,0,0, .25),
+                				 inset .5px -1px 0px 0px rgba(0,0,0, .18),
+                						    0px 1px 0px 0px ($bidStroke/2.5)));
+		text-shadow:-1px -1px 0px $bidStroke*1.2,
+      					 1px -1px 0px $bidStroke*1.2,
+      					-1px 1px 0px $bidStroke/1.05,
+      					 1px 1px 0px $bidStroke/1.05;
+	}
+	&:active {
+		@include box-shadow((inset -.5px 1px 0px 0px rgba(255,255,255, .3),
+            						 inset	0px -15px 10px -10px rgba(255,255,255, .1),
+            						 inset	0px 12px 10px -8px rgba(0,0,0, .18),
+            						 inset .5px -1px 0px 0px rgba(255,255,255, .05),
+            							    	0px 1px 0px 0px ($bidStroke/2.5)));
+    text-shadow:-1px -1px 0px $bidStroke*1.05,
+          			 1px -1px 0px $bidStroke*1.05,
+          			-1px 1px 0px $bidStroke*1.2,
+          			 1px 1px 0px $bidStroke*1.2;
+	}
+}

@@ -1,0 +1,13 @@
+<% if session[:user] == nil %>
+  <%= form_tag login_users_path, :id => "form_login" do %>
+    <%= text_field_tag :username, "", :placeholder => "Username", :class => flash[:error_login_username] %>
+    <%= password_field_tag :password, "", :placeholder => "Password", :class => flash[:error_login_password] %>
+    <a href="#">Forgot password?</a>
+    <%= submit_tag "Login" %>
+  <% end %>
+<% else %>
+  <%= form_tag logout_users_path do %>
+    <%= session[:user].username %>
+    <%= submit_tag "Logout" %>
+  <% end %>
+<% end %>

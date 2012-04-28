@@ -1,0 +1,202 @@
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+	position: relative;
+}
+body {
+  background: rgba(0,0,0, .02);
+  color: #333;
+  font-family: Calibri, Helvetica, sans-serif;
+  line-height: 18px;
+  max-width: 1204px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+#notice {
+  color: green; 
+}
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table; 
+}
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
+.container { 
+/*border: 1px solid green;*/
+	margin: 0 auto;
+	max-width: 1018px;
+}
+.sidebar {
+/*border: 1px solid green;*/
+/*	padding: 0 30px;*/
+	position: fixed;
+	width: 232px;
+}
+.logo {
+	background: rgba(0,0,0, .005);
+	margin: 0 15px;
+	padding:90px;
+}
+.nav {
+  background: $btnBase*1.1;
+  border: 1px solid #2e7d8a;
+  @include box-shadow((inset  0px 0px 13px 3px rgba(0,0,0, .18),
+            					 inset	0px 15px 10px -10px rgba(255,255,255, .1),
+            					 inset	0px -15px 0px 0px rgba(0,0,0, .08)));
+  padding: 4px 0 8px 0;
+  &:before,
+  &:after {
+    border-top: 10px solid #153236;
+    border-left: 10px solid transparent;
+    content:"";
+    height: 0px;
+    left: -1px;
+    position: absolute;
+    top: 31px;
+    width: 0;
+  }
+  &:after {
+    border-top: 10px solid #153236;
+    border-right: 10px solid transparent;
+    left: 210px;
+  }
+}
+.nav a { 
+  color: #fff;
+  border: 1px solid transparent;
+  font-size: .96em;
+  padding: 4px 17px 8px 17px;
+  text-decoration: none;  
+  text-shadow: 0px 2px 0px ($bidStroke*1.05),
+               0px -1px 0px ($bidStroke);
+  text-transform: uppercase;
+  width: 75px;
+  &:hover {
+    font-weight: bold;
+  }
+}
+.nav a.selected {
+  border: 1px solid #2e7d8a;
+  @include box-shadow((inset  0px 0px 13px 3px rgba(0,0,0, .10),
+            					 inset	0px 15px 10px -10px rgba(255,255,255, .1),
+            					 inset	0px -30px 0px 0px rgba(0,0,0, .08)));
+  font-weight: bold;
+}
+.user_functions {
+  background: #fdfdfd;
+  border: 1px solid #d1d1d1;
+  @include box-shadow((inset 0px 3px 0px 0px rgba(0,0,0, .04)));
+  margin: 0 10px;
+  padding: 0 20px;
+  position: relative;
+  &:before {
+    background: url(sidebar-butt.png) no-repeat;
+    bottom: -33px;
+    content: "";
+    height: 33px;
+    left: 0;
+    position: absolute;
+    width: 210px;
+  }
+}
+.user_functions input {
+	@include prefix(border-radius, 2px);
+	display: block;
+	font: inherit;
+	margin: 12px 0;
+}
+.user_functions a {
+  color: #317d89;
+  font-size: .75em;
+  text-decoration: none;
+}
+.user_functions input[type=text],
+.user_functions input[type=password,
+.filters input[type=text] {
+	border: 1px solid #d1d1d1;
+	color: #333;
+	font-size: .75em;
+	padding: 4px 2px 2px 6px;
+	width: 170px;
+	&:focus {
+		border: 1px solid $bidStroke;
+		@include box-shadow((inset 0px 0px 3px 0px $btnBase));
+		outline: 0;
+	}
+	&.error {
+	  border: 1px solid #eaafaf/1.2;
+	  @include box-shadow((inset 0px 0px 4px 0px #d14b4b));
+	}
+	&:hover {
+	  border-color: #c2c2c2;
+	}
+}
+.user_functions input[type=button],
+.user_functions input[type=submit] {
+  background: #fafafa;
+	border: 1px solid #d1d1d1;
+	color: rgba(0,0,0, .6);
+	font-size: .9em;
+	padding: 3px 10px;
+	@include prefix(border-radius, 3px);
+	@include box-shadow((inset 0px -14px 10px -10px rgba(0,0,0, .075),
+	                     inset 0px 3px 0px 0px rgba(255,255,255, .6)));
+	text-shadow: 0px 1px 0px #fff;
+}
+.user_functions input[type=submit] {
+  bottom: 0;
+  position: absolute;
+  right: 0;
+}
+#form_login {
+  padding-bottom: 15px;
+}
+.content,
+.filter_bar {
+	margin-left: 240px + 12px;
+	margin-top: 12px;
+}
+.filters {
+  backround: #fdfdfd;
+  border: 1px solid #d1d1d1;
+  @include prefix(border-radius, 3px);
+  @include box-shadow((inset 0px 3px 0px 0px rgba(255,255,255, .6)));
+  margin-right: 8px;
+  padding: 15px 0;
+  position: relative;
+}
+.filters input[type=text]{
+  background: url(search-icon.png) no-repeat 4px 2px;
+  @include prefix(border-radius, 10px);
+  margin: -10px 6px 0 0;
+  padding: 2px 0px 3px 20px;
+  position: absolute;
+  right: 0px;
+  font-size: .67em;
+  width: 180px;
+}
+#new_auction {
+	float: right;
+}
