@@ -75,17 +75,21 @@ class UsersController < ApplicationController
   def login
     @user = User.where("lower(username) = ?", params[:username].downcase).first
     
+    # Send username back
+    flash[:username] = params[:username]
+    
+    # Check username/password
     if @user != nil # Username exists
-      if @user.password == params[:password]
+      if @user.password == params[:password] # Login successful
         session[:user] = @user
-      else
-        flash[:error_login_password] = "error"
+      else # Password incorrect
+        flash[:error] = { :field => "password" }
       end
     else # Username does not exist
-      flash[:error_login_username] = "error"
+      flash[:error] = { :field => "username" }
     end
     
-    redirect_to :back
+    redirect_to :back # Go back to previous page
   end
   
   # POST /logout
