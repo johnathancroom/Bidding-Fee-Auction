@@ -1,9 +1,16 @@
 BiddingFeeAuction::Application.routes.draw do
 
-  match 'profile' => 'profile#index'
+  # match 'profile' => 'profile#index'
   match 'auctions/bid' => 'auctions#bid'
   
-  resources :listings, :auctions, :users
+  resources :listings, :auctions
+  
+  resources :users do
+    collection do
+      post 'login'
+      post 'logout'
+    end
+  end
   
   root :to => 'home#index'
 

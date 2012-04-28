@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120424030238) do
+ActiveRecord::Schema.define(:version => 20120428073929) do
 
   create_table "auctions", :force => true do |t|
     t.integer  "listing_id"
@@ -37,8 +37,9 @@ ActiveRecord::Schema.define(:version => 20120424030238) do
   create_table "users", :force => true do |t|
     t.string   "username"
     t.integer  "bids"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "password_hash"
   end
 
   add_index "users", ["id"], :name => "index_users_on_id", :unique => true

@@ -1,6 +1,7 @@
 class AuctionsController < ApplicationController
+  before_filter :get_auction, :only => [:destory, :update, :bid, :edit, :show]
+  
   # GET /auctions
-  # GET /auctions.json
   def index
     @auctions = Auction.find(:all, :conditions => "end_time >= "+Time.new.to_i.to_s)
 
@@ -12,10 +13,7 @@ class AuctionsController < ApplicationController
   end
 
   # GET /auctions/1
-  # GET /auctions/1.json
   def show
-    @auction = Auction.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @auction }
@@ -23,7 +21,6 @@ class AuctionsController < ApplicationController
   end
 
   # GET /auctions/new
-  # GET /auctions/new.json
   def new
     if 1 == 2 # auth for admin
       render_404
@@ -39,11 +36,10 @@ class AuctionsController < ApplicationController
 
   # GET /auctions/1/edit
   def edit
-    @auction = Auction.find(params[:id])
   end
   
+  # GET /auctions/bid
   def bid
-    @auction = Auction.find(params[:id])
     @auction.price += 1
     @auction.save()
     
@@ -51,7 +47,6 @@ class AuctionsController < ApplicationController
   end
 
   # POST /auctions
-  # POST /auctions.json
   def create
     @auction = Auction.new(params[:auction])
     @auction.end_time = Time.new.to_i + 3600*24 # Set end_time 24 hours ahead of now
@@ -68,9 +63,7 @@ class AuctionsController < ApplicationController
   end
 
   # PUT /auctions/1
-  # PUT /auctions/1.json
   def update
-    @auction = Auction.find(params[:id])
 
     respond_to do |format|
       if @auction.update_attributes(params[:auction])
@@ -84,14 +77,17 @@ class AuctionsController < ApplicationController
   end
 
   # DELETE /auctions/1
-  # DELETE /auctions/1.json
   def destroy
-    @auction = Auction.find(params[:id])
     @auction.destroy
 
     respond_to do |format|
       format.html { redirect_to auctions_url }
       format.json { head :no_content }
     end
+  end
+  
+  # DRY Functions
+  def get_auction
+  	@auction = Auction.find(params[:id])
   end
 end
