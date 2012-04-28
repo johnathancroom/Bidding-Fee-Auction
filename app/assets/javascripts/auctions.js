@@ -1,4 +1,40 @@
-function AuctionUpdate(auction) {
+/////////////////////////////////////////////////////////
+//
+//  Interactions
+//
+/////////////////////////////////////////////////////////
+$(".button_bid").on("click", function() {
+  $.ajax({
+    url: "/auctions/bid",
+    data: {
+      id: $(this).parent().attr("data-id")
+    },
+    type: "POST",
+    success: function(data, status, xhr) {
+      AuctionUpdate(data);
+    },
+    error: function(xhr, status, error) {
+      if(parseInt(xhr.status) == 401) // Not logged in
+      {
+        alert("Please log in");
+      }
+      else 
+      {
+        triggerError(xhr.status);
+      }
+    }
+  });
+});
+
+/////////////////////////////////////////////////////////
+//
+//  Auction Functions
+//
+/////////////////////////////////////////////////////////
+function AuctionUpdate(data) {
+  var auction = data.auction;
+  var user = data.user;
+
   var window = $("[data-id="+auction.id+"]");
   
   var priceElement = $(".price", window);
@@ -7,21 +43,15 @@ function AuctionUpdate(auction) {
     	priceElement.animate({ backgroundColor: "transparent" }, 100);
     })
     .html(number_to_currency(auction.price));
+    
+  $(".highest_bidder", window).html(user.username);
 }
 
-$(".button_bid").on("click", function() {
-  $.ajax({
-    url: "/auctions/bid",
-    data: {
-      id: $(this).parent().attr("data-id")
-    },
-    method: "POST",
-    success: function(data, status, xhr) {
-      AuctionUpdate(data);
-    }
-  });
-});
-
+/////////////////////////////////////////////////////////
+//
+//  Timer Functions
+//
+/////////////////////////////////////////////////////////
 function getServerTime() {
 	var local = new Date();
 	var utc = local.getTime() + (local.getTimezoneOffset() * 60000);

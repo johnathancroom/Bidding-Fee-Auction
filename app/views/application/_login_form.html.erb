@@ -1,4 +1,4 @@
-<% if session[:user].nil? %>
+<% if !logged_in? %>
   <%= form_tag login_users_path, :id => "form_login" do %>
     <%= 
     text_field_tag :username, (flash[:username] if flash[:username]), 
@@ -14,7 +14,7 @@
   <% end %>
 <% else %>
   <%= form_tag logout_users_path do %>
-    <%= session[:user].username %>
+    <%= @current_user.username %>
     <%= submit_tag "Logout" %>
   <% end %>
 <% end %>

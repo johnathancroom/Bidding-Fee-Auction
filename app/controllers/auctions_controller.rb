@@ -38,12 +38,13 @@ class AuctionsController < ApplicationController
   def edit
   end
   
-  # GET /auctions/bid
+  # POST /auctions/bid
   def bid
     @auction.price += 1
+    @auction.user_id = @current_user.id
     @auction.save()
     
-    render :json => @auction
+    render :json => { :auction => @auction, :user => @auction.user }
   end
 
   # POST /auctions

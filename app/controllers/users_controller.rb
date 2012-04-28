@@ -81,7 +81,7 @@ class UsersController < ApplicationController
     # Check username/password
     if @user != nil # Username exists
       if @user.password == params[:password] # Login successful
-        session[:user] = @user
+        session[:user_id] = @user.id
       else # Password incorrect
         flash[:error] = { :field => "password" }
       end
@@ -94,7 +94,7 @@ class UsersController < ApplicationController
   
   # POST /logout
   def logout
-    session[:user] = nil
+    session[:user_id] = nil
     redirect_to :back
   end
   

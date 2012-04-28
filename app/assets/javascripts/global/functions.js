@@ -1,3 +1,5 @@
+// Convert number to currency
+//   Usage: 1234 => $12.34
 function number_to_currency(number) {
   var temp = (number*.01).toString();
   var split = temp.split(".");
@@ -12,4 +14,10 @@ function number_to_currency(number) {
   }
   
   return "$"+parseFloat(split.join(".")).toFixed(2);
+}
+
+// Trigger error
+function triggerError(error) {
+  alert("Error triggered\nSee console");
+  console.log(error);
 }
