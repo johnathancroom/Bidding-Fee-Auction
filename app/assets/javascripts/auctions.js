@@ -1,3 +1,13 @@
+$(document).ready(function() {
+/////////////////////////////////////////////////////////
+//
+//  Initialize
+//
+/////////////////////////////////////////////////////////
+charles.listen('updateAuction', function(data) {
+  auctionUpdate(data);
+});
+
 /////////////////////////////////////////////////////////
 //
 //  Interactions
@@ -7,21 +17,28 @@ $(".button_bid").on("click", function() {
   $.ajax({
     url: "/auctions/bid",
     data: {
+    
       id: $(this).parent().attr("data-id")
+      
     },
     type: "POST",
     success: function(data, status, xhr) {
-      AuctionUpdate(data);
+    
+      auctionUpdate(data); // Update self
+      charles.send('updateAuction', data); // Update others
+      
     },
     error: function(xhr, status, error) {
+    
       if(parseInt(xhr.status) == 401) // Not logged in
       {
         alert("Please log in");
       }
       else 
       {
-        triggerError(xhr.status);
+        error(xhr.status);
       }
+      
     }
   });
 });
@@ -31,7 +48,7 @@ $(".button_bid").on("click", function() {
 //  Auction Functions
 //
 /////////////////////////////////////////////////////////
-function AuctionUpdate(data) {
+function auctionUpdate(data) {
   var auction = data.auction;
   var user = data.user;
 
@@ -109,3 +126,6 @@ function updateTime() {
 }
 updateTime();
 setInterval(updateTime, 100);
+
+/////////////////////////////////////////////////////////
+});

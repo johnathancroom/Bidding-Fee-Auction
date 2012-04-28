@@ -17,6 +17,8 @@ BiddingFeeAuction::Application.routes.draw do
     end
   end
   
+  match 'pusher/auth' => 'pusher#auth'
+  
   root :to => 'home#index'
 
   # The priority is based upon order of creation:
