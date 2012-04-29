@@ -1,5 +1,5 @@
 <% if !logged_in? %>
-  <%= form_tag login_users_path, :id => "form_login" do %>
+  <%= form_tag login_users_path do %>
     <%= 
     text_field_tag :username, (flash[:username] if flash[:username]), 
       :placeholder => "Username", 
