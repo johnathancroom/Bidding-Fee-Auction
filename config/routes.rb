@@ -1,6 +1,4 @@
 BiddingFeeAuction::Application.routes.draw do
-
-  # match 'profile' => 'profile#index'
   
   resources :listings
   
@@ -17,7 +15,7 @@ BiddingFeeAuction::Application.routes.draw do
     end
   end
   
-  match 'pusher/auth' => 'pusher#auth'
+  post 'pusher/auth'
   
   root :to => 'home#index'
 
