@@ -13,6 +13,9 @@
 /*
 = require jquery
 = require jquery_ujs
+
+= require jquery.color
 = require pusher.min
+
 = require_tree .
 */
