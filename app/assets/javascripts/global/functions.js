@@ -17,7 +17,7 @@ function number_to_currency(number) {
 }
 
 // Trigger error
-function error(error) {
+function triggerError(error) {
   alert("Error\nSee console");
   console.error(error);
 }

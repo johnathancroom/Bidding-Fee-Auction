@@ -30,13 +30,13 @@ $(".button_bid").on("click", function() {
     },
     error: function(xhr, status, error) {
     
-      if(parseInt(xhr.status) == 401) // Not logged in
+      if(parseInt(xhr.status) == 403) // Not logged in
       {
         alert("Please log in");
       }
       else 
       {
-        error(xhr.status);
+        triggerError(xhr);
       }
       
     }
