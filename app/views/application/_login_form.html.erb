@@ -10,11 +10,11 @@
       :class => ("error" if flash[:error] && flash[:error][:field] == "password")
     %>
     <a href="#">Forgot password?</a>
-    <%= submit_tag "Login" %>
+    <%= submit_tag "Log in" %>
   <% end %>
 <% else %>
   <%= form_tag logout_users_path do %>
     <%= @current_user.username %>
-    <%= submit_tag "Logout" %>
+    <%= submit_tag "Log out" %>
   <% end %>
 <% end %>

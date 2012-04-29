@@ -52,7 +52,7 @@ body {
 /*border: 1px solid green;*/
 /*	padding: 0 30px;*/
 	position: fixed;
-	width: 232px;
+	width: 233px;
 }
 .logo {
 	background: rgba(0,0,0, .005);
@@ -62,47 +62,66 @@ body {
 .nav {
   background: $btnBase*1.1;
   border: 1px solid #2e7d8a;
-  @include box-shadow((inset  0px 0px 13px 3px rgba(0,0,0, .18),
-            					 inset	0px 15px 10px -10px rgba(255,255,255, .1),
-            					 inset	0px -15px 0px 0px rgba(0,0,0, .08)));
-  padding: 4px 0 8px 0;
+  @include box-shadow((
+    inset  0px 0px 13px 3px rgba(0,0,0, .18),
+    inset	0px 15px 10px -10px rgba(255,255,255, .1),
+    inset	0px -15px 0px 0px rgba(0,0,0, .08),
+    
+    0px 2px 0px 0px #1B5A64
+  ));
+  
   &:before,
   &:after {
-    border-top: 10px solid #153236;
+    border-top: 10px solid #133D42;
     border-left: 10px solid transparent;
     content:"";
     height: 0px;
     left: -1px;
     position: absolute;
-    top: 31px;
+    top: 35px;
     width: 0;
   }
   &:after {
     border-top: 10px solid #153236;
     border-right: 10px solid transparent;
-    left: 210px;
+    left: auto;
+    right: 0px;
   }
 }
 .nav a { 
-  color: #fff;
   border: 1px solid transparent;
+  color: #fff;
+  display: inline-block;
   font-size: .96em;
-  padding: 4px 17px 8px 17px;
+  margin-left: -5px;
+  padding: 4px 0 8px 0;
+  text-align: center;
   text-decoration: none;  
   text-shadow: 0px 2px 0px ($bidStroke*1.05),
                0px -1px 0px ($bidStroke);
   text-transform: uppercase;
-  width: 75px;
-  &:hover {
-    font-weight: bold;
+  width: 78px;
+
+  &:first-child {
+    margin-left: -1px;
   }
-}
-.nav a.selected {
-  border: 1px solid #2e7d8a;
-  @include box-shadow((inset  0px 0px 13px 3px rgba(0,0,0, .10),
-            					 inset	0px 15px 10px -10px rgba(255,255,255, .1),
-            					 inset	0px -30px 0px 0px rgba(0,0,0, .08)));
-  font-weight: bold;
+  &:hover,
+  &:focus {
+    border-left-color: #2e7d8a;
+    border-right-color: #237d8a;
+    @include box-shadow((
+      inset	0px -30px 0px 0px rgba(255,255,255, .08),
+      
+      0px 0px 5px 1px rgba(0, 0, 0, 0.1)
+    ));
+    outline: 0;
+  }
+  &:active {
+    border: 1px solid #2e7d8a;
+    @include box-shadow((inset  0px 0px 13px 3px rgba(0,0,0, .05),
+              					 inset	0px 15px 10px -10px rgba(255,255,255, .05),
+              					 inset	0px -30px 0px 0px rgba(0,0,0, .04)));
+  }
 }
 .user_functions {
   background: #fdfdfd;
@@ -111,6 +130,8 @@ body {
   margin: 0 10px;
   padding: 0 20px;
   position: relative;
+  top: 2px;
+  
   &:before {
     background: url(sidebar-butt.png) no-repeat;
     bottom: -33px;
@@ -162,12 +183,17 @@ body {
   background: #fafafa;
 	border: 1px solid #d1d1d1;
   @include prefix(border-radius, 3px);
+  bottom: 0;
   @include box-shadow((inset 0px -14px 10px -10px rgba(0,0,0, .075),
                        inset 0px 3px 0px 0px rgba(255,255,255, .6)));
 	color: rgba(0,0,0, .6);
+	cursor: pointer;
 	font-size: .9em;
 	padding: 3px 10px;
+	position: absolute;
+	right: 0;
 	text-shadow: 0px 1px 0px #fff;
+	
   &:focus,
   &:hover {
   	color: rgba(0,0,0, .55);
@@ -185,11 +211,6 @@ body {
                          inset 0px 3px 0px 0px rgba(255,255,255, .6)));
     text-shadow: 0px -1px 0px #fff;
   }
-}
-.user_functions input[type=submit] {
-  bottom: 0;
-  position: absolute;
-  right: 0;
 }
 #form_login {
   padding-bottom: 15px;
@@ -298,7 +319,4 @@ body {
                           0px 8px 2px 0px rgba(0,0,0, .1),
                           0px 0px 2px 0px rgba(0,0,0, .1)));
   }
-}
-#new_auction {
-	float: right;
 }
