@@ -4,25 +4,25 @@
 	@include box-shadow((inset 0px -2px 6px 0px rgba(0,0,0, .08)));
 	color: #333;
 	display: inline-block;
-	margin:0 8px 12px 0;
+	margin:0 6px 10px 0;
 	text-align: center;
-	width: 180px;
+	width: 160px; /*180, height:270*/
 }
 .retail,
 .highest_bidder {
-	font-size: .75em;
+	font-size: .72em;
 }
 .item_name {
 	color: #444;
 	display: block;
 	font-weight: normal;
-	font-size: .9em;
+	font-size: .88em;
 	height: 30px;
 	line-height:  0.95em;
-	margin: 9px auto 0 auto;
+	margin: 7px auto 0 auto;
 	text-decoration: none;
 	&:hover {
-	  color: $btnBase/1.4;
+	  color: $btnBase/1.15;
 	}
 }
 img {
@@ -37,8 +37,8 @@ img {
 .end_time {
   @include background1;
   @include box-shadow((0px 1px 0px 0px rgba(0,0,0, .1)));
-	font-size: 1.3em;
-	padding: 4px 0;
+	font-size: 1.1em;
+	padding: 3px 0;
 	&:before {
     @include background2;
 		content:"";
@@ -55,10 +55,11 @@ img {
 .price {
 	color: #333;
 	font-weight: bold;
-	font-size: 1.8em;
-	margin-top: 12px;
+	font-size: 1.7em;
+	margin-top: 8px;
 }
 .highest_bidder {
+	margin-top: 1px;
 	color: $bidStroke/1.6;
 }
 .button_bid {
@@ -71,17 +72,17 @@ img {
             						    	0px 1px 0px 0px ($bidStroke/2.5)));  
 	color: $bidTXT;
 	cursor: pointer;
-	font-size: 1.1em;
-	letter-spacing: .08em;
-	margin: 4px auto 12px auto;
-	padding: 4px 0 2px 0;
+	font-size: 1.04em;
+	letter-spacing: .06em;
+	margin: 4px auto 10px auto;
+	padding: 3px 0 3px 0;
   text-shadow:-1px -1px 0px $bidStroke,
       				 1px -1px 0px $bidStroke,
       				-1px 1px 0px $bidStroke,
       				 1px 1px 0px $bidStroke,
       				 0px 2px 0px ($bidStroke/1.1);
   text-transform: uppercase;
-	width: 58px;
+	width: 54px;
 	&:hover,
 	&:focus {
 	  border: 1px solid ($bidStroke/1.15);
