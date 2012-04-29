@@ -1,4 +1,6 @@
 class AuctionsController < ApplicationController
+  include ActionView::Helpers::NumberHelper # for number_to_currency
+  
   before_filter :get_auction, :only => [:destory, :update, :bid, :edit, :show]
   
   # GET /auctions
@@ -44,7 +46,11 @@ class AuctionsController < ApplicationController
     @auction.user_id = @current_user.id
     @auction.save()
     
-    render :json => { :auction => @auction, :user => @auction.user }
+    render :json => { 
+      'id' => @auction.id,
+      'price' => (number_to_currency @auction.price*0.01),
+      'username' => @auction.user.username
+    }
   end
 
   # POST /auctions

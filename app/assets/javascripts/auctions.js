@@ -48,10 +48,7 @@ $(".button_bid").on("click", function() {
 //  Auction Functions
 //
 /////////////////////////////////////////////////////////
-function auctionUpdate(data) {
-  var auction = data.auction;
-  var user = data.user;
-
+function auctionUpdate(auction) {
   var window = $("[data-id="+auction.id+"]");
   
   var priceElement = $(".price", window);
@@ -59,9 +56,9 @@ function auctionUpdate(data) {
     .stop().animate({ backgroundColor: "#FCC" }, 100, function() {
     	priceElement.animate({ backgroundColor: "transparent" }, 100);
     })
-    .html(number_to_currency(auction.price));
+    .html(auction.price);
     
-  $(".highest_bidder", window).html(user.username);
+  $(".highest_bidder", window).html(auction.username);
 }
 
 /////////////////////////////////////////////////////////
