@@ -125,12 +125,13 @@ img {
   border-left: 1px solid #d1d1d1;
   margin-right: 8px;
 }
-.list-item:nth-child(2n+3) {
+.list-item:nth-of-type(odd) {
   @include box-shadow((inset 0px -20px 26px -10px rgba(0,0,0, .04))); 
 }
 /* FALLBACK: first-of-type, NOT DONE */
 .list-item:first-of-type {
   border-top: 1px solid #d1d1d1;
+  @include box-shadow((0px 0px 0px 0px #000));//Get rid of box-shadow
 }
 /* FALLBACK: last-of-type, NOT DONE */
 .list-item:last-of-type {
