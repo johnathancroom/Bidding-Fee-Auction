@@ -46,7 +46,7 @@ body {
 .container { 
 /*border: 1px solid green;*/
 	margin: 0 auto;
-	max-width: 1018px;
+	max-width: 930px;
 }
 .sidebar {
 /*border: 1px solid green;*/
@@ -106,17 +106,25 @@ body {
     border-left-color: #2e7d8a;
     border-right-color: #237d8a;
     @include box-shadow((
-      inset	0px -30px 0px 0px rgba(255,255,255, .08),
-      
+      inset 0px 1px 1px 0px rgba(255,255,255, .1),
+      inset 0px 4px 1px 2px rgba(255,255,255, .05),
+      inset	0px -30px 0px 0px rgba(255,255,255, .07),
       0px 0px 5px 1px rgba(0, 0, 0, 0.1)
     ));
     outline: 0;
+    text-shadow: 0px 1px 0px ($bidStroke*1.05),
+                 0px -1px 0px ($bidStroke);
   }
   &:active {
     border: 1px solid #2e7d8a;
-    @include box-shadow((inset  0px 0px 13px 3px rgba(0,0,0, .05),
-              					 inset	0px 15px 10px -10px rgba(255,255,255, .05),
-              					 inset	0px -30px 0px 0px rgba(0,0,0, .04)));
+    @include box-shadow((
+      inset 0px 0px 13px 3px rgba(0,0,0, .05),
+      inset	0px 15px 10px -10px rgba(255,255,255, .04),
+      inset	0px -30px 0px 0px rgba(0,0,0, .04),
+      inset 0px 2px 4px 0px rgba(46,125,138, .8)
+    ));
+    text-shadow: 0px 1px 0px ($bidStroke*1.05),
+                 0px -1px 0px ($bidStroke);
   }
 }
 .user_functions {
@@ -163,7 +171,7 @@ body {
 	padding: 4px 2px 2px 6px;
 	width: 170px;
 	&:focus {
-		@include box-shadow((inset 0px 0px 3px 0px $btnBase));
+		@include box-shadow((inset 0px 0px 3px 1px $btnBase));
 		outline: 0;
 	}
 	&.error {
@@ -180,8 +188,10 @@ body {
 	border: 1px solid #d1d1d1;
   @include prefix(border-radius, 3px);
   bottom: -6px;
-  @include box-shadow((inset 0px -14px 10px -10px rgba(0,0,0, .075),
-                       inset 0px 3px 0px 0px rgba(255,255,255, .6)));
+  @include box-shadow((
+    inset 0px -14px 10px -10px rgba(0,0,0, .075),
+    inset 0px 3px 0px 0px rgba(255,255,255, .6)
+  ));
 	color: rgba(0,0,0, .6);
 	cursor: pointer;
 	font-size: .9em;
@@ -194,17 +204,21 @@ body {
   &:hover {
   	color: rgba(0,0,0, .55);
   	border: 1px solid #c6c6c6;
-    @include box-shadow((inset 0px -18px 12px -10px rgba(0,0,0, .09),
-                         inset 0px -1px 0px 0px rgba(0,0,0, .05),
-                         inset 0px -3px 0px 0px rgba(255,255,255, .3),
-                         inset 0px 3px 0px 0px rgba(255,255,255, .1)));
+    @include box-shadow((
+      inset 0px -18px 12px -10px rgba(0,0,0, .09),
+      inset 0px -1px 0px 0px rgba(0,0,0, .05),
+      inset 0px -3px 0px 0px rgba(255,255,255, .3),
+      inset 0px 3px 0px 0px rgba(255,255,255, .1)
+    ));
     text-shadow: 0px 2px 0px rgba(255,255,255, .7);
   }
   &:active {
-    @include box-shadow((inset 0px 14px 8px -8px rgba(0,0,0, .075),
-                         inset 0px -1px 0px 0px rgba(0,0,0, .1),
-                         inset 0px -3px 0px 0px rgba(255,255,255, 1),
-                         inset 0px 3px 0px 0px rgba(255,255,255, .6)));
+    @include box-shadow((
+      inset 0px 14px 8px -8px rgba(0,0,0, .075),
+      inset 0px -1px 0px 0px rgba(0,0,0, .1),
+      inset 0px -3px 0px 0px rgba(255,255,255, 1),
+      inset 0px 3px 0px 0px rgba(255,255,255, .6)
+    ));
     text-shadow: 0px -1px 0px #fff;
   }
 }

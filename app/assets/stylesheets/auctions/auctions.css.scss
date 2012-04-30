@@ -1,12 +1,11 @@
 .filter-bar {
-  margin-bottom: 12px;
+  margin: 0 8px 12px 0;
 }
 .filters {
   backround: #fdfdfd;
   border: 1px solid #d1d1d1;
   @include prefix(border-radius, 3px);
   @include box-shadow((inset 0px 3px 0px 0px rgba(255,255,255, .6)));
-  margin-right: 8px;
   padding: 15px 0;
   position: relative;
 }
@@ -22,6 +21,7 @@
   font-size: .67em;
   width: 180px;
 }
+/* NOT DONE: fallback images*/
 .gridded,
 .gridded:before,
 .gridded:after,
@@ -49,11 +49,13 @@
     left: 0px;
     top: -10px;
     width: 4px;
-    @include box-shadow(( 0px 8px 0px -2px #fff,
-                          0px 8px 0px -1px rgba(0,0,0, .05),  /*edge shade*/
-                          0px 8px 0px -1px #fff,
-                          0px 8px 0px 0px #b4b4b4,            /*faux border*/
-                    inset 0px 0px 0px 1px rgba(0,0,0, .05)));
+    @include box-shadow(( 
+      0px 8px 0px -2px #fff,
+      0px 8px 0px -1px rgba(0,0,0, .05),  /*edge shade*/
+      0px 8px 0px -1px #fff,
+      0px 8px 0px 0px #b4b4b4,            /*faux border*/
+      inset 0px 0px 0px 1px rgba(0,0,0, .05)
+    ));
   }
   &:after {
     left: 8px;
@@ -61,14 +63,16 @@
   &:hover:before,
   &:hover:after {
     background: #fff;
-    border-color: $btnBase*1.1;
-    @include box-shadow(( 0px 8px 0px -2px #fff,
-                          0px 8px 0px -1px rgba(62,159,178, .5),  /*inset shade*/
-                          0px 8px 0px -1px #fff,
-                          0px 8px 0px 0px $btnBase*1.1,            /*faux border*/
-                          0px 8px 2px 0px rgba(0,0,0, .2),
-                    inset 0px 0px 0px 1px rgba(62,159,178, .5),   /*inset shade*/
-                          0px 0px 2px 0px rgba(0,0,0, .2)));
+    border-color: $btnBase*1.07;
+    @include box-shadow(( 
+      0px 8px 0px -2px #fff,
+      0px 8px 0px -1px rgba(62,159,178, .5),  /*inset shade*/
+      0px 8px 0px -1px #fff,
+      0px 8px 0px 0px $btnBase*1.07,            /*faux border*/
+      0px 8px 2px 0px rgba(0,0,0, .2),
+      inset 0px 0px 0px 1px rgba(62,159,178, .5),   /*inset shade*/
+      0px 0px 2px 0px rgba(0,0,0, .2)
+    ));
   }
 }
 .gridded:before,
@@ -86,9 +90,11 @@
     left: -2px;
     top: -1px;
     width: 14px;
-    @include box-shadow(( 0px 8px 0px 0px #c9c9c9,
-                          0px 1px 0px 0px #fff,
-                          0px 9px 0px 0px #fff));
+    @include box-shadow((
+      0px 8px 0px 0px #c9c9c9,
+      0px 1px 0px 0px #fff,
+      0px 9px 0px 0px #fff
+    ));
   }
   &:after {
     top: 3px;
@@ -96,9 +102,11 @@
   &:hover:before,
   &:hover:after {
     background:  $btnBase*1.1;
-    @include box-shadow(( 0px 8px 0px 0px $btnBase*1.15,
-                          0px 8px 2px 0px rgba(0,0,0, .1),
-                          0px 0px 2px 0px rgba(0,0,0, .1)));
+    @include box-shadow(( 
+      0px 8px 0px 0px $btnBase*1.07,
+      0px 8px 2px 0px rgba(0,0,0, .1),
+      0px 0px 2px 0px rgba(0,0,0, .1)
+    ));
   }
 }
 #new_auction {

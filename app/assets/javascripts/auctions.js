@@ -18,7 +18,7 @@ $(".button_bid").on("click", function() {
     url: "/auctions/bid",
     data: {
     
-      id: $(this).parent().attr("data-id")
+      id: $(this).parent().parent().attr("data-id")
       
     },
     type: "POST",
@@ -52,7 +52,7 @@ $(".gridded, .listed").on("click", function(e) {
     type: "POST",
     success: function(data, status, xhr) {
       
-      $(".auction").each(function(index, element) {
+      $(".auction, .title-bar").each(function(index, element) {
         $(this).removeClass("window list-item").addClass(data);
       });
       
@@ -106,6 +106,8 @@ function updateTime() {
 		window.lastUpdate = new Date().getTime()/1000;
 
 		$(".end_time").each(function() {
+		  if($(this).parent().hasClass("title-bar")) return; // Skip over .title-bar
+		  
 			var server_time = getServerTime();
 
 			var end_time = $(this).attr("data-end-time");

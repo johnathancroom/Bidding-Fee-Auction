@@ -8,8 +8,23 @@
   </section>
 </section>
 
+<% view_as = session[:view_as] || "window" %>
+<div class="<%= view_as %> title-bar">
+  <div class="item_name">Item name</div>
+	<div class="retail">Retail price</div>
+	<div class="end_time">End time</div>
+	<div class="price">Price</div>
+	<div class="highest_bidder">Bidder</div>
+	<div class="bid_container"></div>
+</div>
+
 <% @auctions.each do |auction| %>
-  <%= render :partial => 'bidwindow', :locals => { :auction => auction } %>
+  <%= 
+  render :partial => 'auction', :locals => { 
+    :auction => auction,
+    :view_as => view_as
+  } 
+  %>
 <% end %>
 
 <br>
