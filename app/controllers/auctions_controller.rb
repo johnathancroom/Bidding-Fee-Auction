@@ -96,7 +96,7 @@ class AuctionsController < ApplicationController
   # POST /auctions/view_as/list
   def view_as
     session[:view_as] = params[:type]
-    render :text => session[:view_as]
+    render :nothing => true
   end
   
   # DRY Functions

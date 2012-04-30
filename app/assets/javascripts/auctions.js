@@ -53,7 +53,7 @@ $(".gridded, .listed").on("click", function(e) {
     success: function(data, status, xhr) {
       
       $(".auction, .title-bar").each(function(index, element) {
-        $(this).removeClass("window list-item").addClass(data);
+        $(this).removeClass("window list-item").addClass(type);
       });
       
     },
