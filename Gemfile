@@ -19,9 +19,18 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+# jQuery
 gem 'jquery-rails'
 
+# Pusher
 gem 'pusher', '~> 0.9.2'
+
+# Guard & Guard-livereload
+group :development do
+  gem 'guard'
+  gem 'guard-livereload'
+  gem 'rack-livereload'
+end
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'

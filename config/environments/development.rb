@@ -1,4 +1,4 @@
-BiddingFeeAuction::Application.configure do
+BiddingFeeAuction::Application.configure do  
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -34,4 +34,7 @@ BiddingFeeAuction::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  # Rack livereload
+  config.middleware.insert_before(Rack::Lock, Rack::LiveReload)
 end
