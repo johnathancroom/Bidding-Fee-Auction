@@ -36,11 +36,33 @@ $(".button_bid").on("click", function() {
       }
       else 
       {
-        triggerError(xhr);
+        triggerError(status);
       }
       
     }
   });
+});
+
+$(".gridded, .listed").on("click", function(e) {
+  if($(this).hasClass("gridded")) var type = "window";
+  if($(this).hasClass("listed")) var type = "list-item";
+  
+  $.ajax({
+    url: "/auctions/view_as/"+type,
+    type: "POST",
+    success: function(data, status, xhr) {
+      
+      $(".auction").each(function(index, element) {
+        $(this).removeClass("window list-item").addClass(data);
+      });
+      
+    },
+    error: function(xhr, status, error) {
+      triggerError(status);
+    }
+  });
+  
+  e.preventDefault();
 });
 
 /////////////////////////////////////////////////////////

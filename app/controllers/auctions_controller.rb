@@ -39,19 +39,6 @@ class AuctionsController < ApplicationController
   # GET /auctions/1/edit
   def edit
   end
-  
-  # POST /auctions/bid
-  def bid
-    @auction.price += 1
-    @auction.user_id = @current_user.id
-    @auction.save()
-    
-    render :json => { 
-      'id' => @auction.id,
-      'price' => (number_to_currency @auction.price*0.01),
-      'username' => @auction.user.username
-    }
-  end
 
   # POST /auctions
   def create
@@ -91,6 +78,25 @@ class AuctionsController < ApplicationController
       format.html { redirect_to auctions_url }
       format.json { head :no_content }
     end
+  end
+  
+ # POST /auctions/bid
+  def bid
+    @auction.price += 1
+    @auction.user_id = @current_user.id
+    @auction.save()
+    
+    render :json => { 
+      'id' => @auction.id,
+      'price' => (number_to_currency @auction.price*0.01),
+      'username' => @auction.user.username
+    }
+  end
+  
+  # POST /auctions/view_as/list
+  def view_as
+    session[:view_as] = params[:type]
+    render :text => session[:view_as]
   end
   
   # DRY Functions

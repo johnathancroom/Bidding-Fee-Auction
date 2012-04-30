@@ -1,13 +1,17 @@
 BiddingFeeAuction::Application.routes.draw do
   
+  # Listings
   resources :listings
   
+  # Auctions
   resources :auctions do
     collection do
       post 'bid'
     end
   end
+  post 'auctions/view_as/:type' => 'auctions#view_as'
   
+  # Users
   resources :users do
     collection do
       post 'login'
@@ -15,8 +19,10 @@ BiddingFeeAuction::Application.routes.draw do
     end
   end
   
+  # Pusher
   post 'pusher/auth'
   
+  # Root
   root :to => 'home#index'
 
   # The priority is based upon order of creation:

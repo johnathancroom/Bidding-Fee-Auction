@@ -1,5 +1,13 @@
 <!--<h1>Listing auctions</h1>-->
 
+<section class="filter-bar">
+  <section class="filters">
+    <a class="gridded" href="#"></a>
+    <a class="listed" href="#"></a>
+    <input type="text" name="search" placeholder="Search auctions">
+  </section>
+</section>
+
 <% @auctions.each do |auction| %>
   <%= render :partial => 'bidwindow', :locals => { :auction => auction } %>
 <% end %>
