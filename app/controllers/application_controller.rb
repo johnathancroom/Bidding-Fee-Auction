@@ -1,6 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
+  # Check for keys initializer
+  before_filter :check_keys_initializer
+  
+  def check_keys_initializer
+    if !File.exist? "config/initializers/keys.rb"
+      render :text => "Error. Missing /config/initializers/keys.rb"
+    end
+  end
+  
+  
   # Fetch current user
   before_filter :fetch_current_user
   

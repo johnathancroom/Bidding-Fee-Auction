@@ -5,6 +5,7 @@
 #   git config --global core.excludesfile ~/.gitignore_global
 
 .DS_Store
+config/initializers/keys.rb
 
 # Ignore bundler config
 /.bundle
