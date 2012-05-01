@@ -5,7 +5,7 @@
     <a class="gridded" href="#"></a>
     <a class="listed" href="#"></a>
     <%= form_tag "/search", :method => "get", :id => "search" do %>
-      <%= text_field_tag :q, params[:q], :placeholder => "Search auctions" %>
+      <%= text_field_tag :q, "", :placeholder => "Search auctions" %>
       <%= submit_tag "Search", :name => "" %>
     <% end %>
   </section>

@@ -171,15 +171,12 @@ input[type=password],
 	padding: 4px 2px 2px 6px;
 	width: 170px;
 	&:focus {
-		@include box-shadow((inset 0px 0px 3px 1px $btnBase));
+		@include box-shadow(( 0px 0px 3px 1px $btnBase));
 		outline: 0;
 	}
 	&.error {
 	  border: 1px solid #eaafaf/1.2;
-	  @include box-shadow((inset 0px 0px 4px 0px #d14b4b));
-	}
-	&:hover {
-	  border-color: #b2b2b2;
+	  @include box-shadow(( 0px 0px 4px 0px #d14b4b));
 	}
 }
 .user_functions input[type=button],
