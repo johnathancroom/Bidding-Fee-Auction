@@ -4,6 +4,6 @@
 	<div class="retail"><%= number_to_currency auction.listing.retail, :precision => 0 %> <span>retail</span></div>
 	<div class="end_time" data-end-time="<%= auction.end_time %>">00:00:00</div>
 	<div class="price"><%= number_to_currency auction.price*0.01 %></div>
-	<div class="highest_bidder"><%= auction.user.username %></div>
+	<div class="highest_bidder"><%= link_to auction.user.username, auction.user %></div>
 	<div class="bid_container"><input type="button" class="button_bid" value="Bid"></div>
 </div>
