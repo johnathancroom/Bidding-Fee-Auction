@@ -12,7 +12,7 @@
 .filters #search input[type=text] {
   background: transparent url(search-icon.png) no-repeat 4px 2px;
   border: 0;
-  cursor: pointer;
+  @include prefix(border-radius, 9px);
   font-size: .67em;
   margin: -10px 6px 0 0;
   padding: 2px 0px 3px 25px;
@@ -21,11 +21,9 @@
   @include transition(width ease 1s);
   width: 0;
   
-  &:focus {
+  &:hover {
     background-color: #fff;
     border: 1px solid #D1D1D1;
-    @include prefix(border-radius, 9px);
-    cursor: text;
     padding-left: 20px;
     right: 0;
     width: 180px;
