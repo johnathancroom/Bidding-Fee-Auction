@@ -4,12 +4,14 @@
   <section class="filters">
     <a class="gridded" href="#"></a>
     <a class="listed" href="#"></a>
-    <input type="text" name="search" placeholder="Search auctions">
+    <%= form_tag "/search", :method => "get", :id => "search" do %>
+      <%= text_field_tag :q, params[:q], :placeholder => "Search auctions" %>
+      <%= submit_tag "Search", :name => "" %>
+    <% end %>
   </section>
 </section>
 
-<% view_as = session[:view_as] || "window" %>
-<div class="<%= view_as %> title-bar">
+<div class="<%= session[:view_as] %> auction title-bar">
   <div class="item_name">Item name</div>
 	<div class="retail">Retail price</div>
 	<div class="end_time">End time</div>
@@ -18,15 +20,16 @@
 	<div class="bid_container"></div>
 </div>
 
-<% @auctions.each do |auction| %>
-  <%= 
-  render :partial => 'auction', :locals => { 
-    :auction => auction,
-    :view_as => view_as
-  } 
-  %>
+<% if !@auctions.nil? && @auctions.count > 0 %>
+  <% @auctions.each do |auction| %>
+    <%= 
+    render :partial => 'auction', :locals => { 
+      :auction => auction
+    } 
+    %>
+  <% end %>
+<% elsif controller.action_name == "search" %>
+  <%= "Search didn't return any results" %>
+<% else %>
+  <%= "No auctions currently running" %>
 <% end %>
-
-<br>
-
-<%= link_to 'New Auction', new_auction_path %>

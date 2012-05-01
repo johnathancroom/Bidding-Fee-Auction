@@ -161,9 +161,9 @@ body {
     text-decoration: underline;
   }
 }
-.user_functions input[type=text],
-.user_functions input[type=password],
-.filters input[type=text] {
+input[type=text],
+input[type=password],
+.filters #search input[type=text] {
 	border: 1px solid #d1d1d1;
 	color: #333;
 	font-size: .75em;
@@ -179,7 +179,7 @@ body {
 	  @include box-shadow((inset 0px 0px 4px 0px #d14b4b));
 	}
 	&:hover {
-	  border-color: #c2c2c2;
+	  border-color: #b2b2b2;
 	}
 }
 .user_functions input[type=button],

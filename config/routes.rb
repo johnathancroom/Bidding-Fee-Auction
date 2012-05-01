@@ -9,6 +9,7 @@ BiddingFeeAuction::Application.routes.draw do
       post 'bid'
     end
   end
+  get 'search' => 'auctions#search'
   post 'auctions/view_as/:type' => 'auctions#view_as'
   
   # Users

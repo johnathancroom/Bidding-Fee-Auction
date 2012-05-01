@@ -5,8 +5,7 @@ class AuctionsController < ApplicationController
   
   # GET /auctions
   def index
-    @auctions = Auction.find(:all, :conditions => "end_time >= "+Time.new.to_i.to_s)
-
+    @auctions = Auction.find(:all, :conditions => "end_time >= "+Time.new.to_i.to_s)    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @auctions }
@@ -91,6 +90,20 @@ class AuctionsController < ApplicationController
       'price' => (number_to_currency @auction.price*0.01),
       'username' => @auction.user.username
     }
+  end
+  
+  def search
+    if !params[:q].nil?
+      @auctions = 
+        Auction
+          .joins(:listing)
+          .where("listings.name LIKE :query AND auctions.end_time >= :time", 
+            :query => "%"+params[:q]+"%",
+            :time => Time.new.to_i.to_s
+          )
+    end
+    
+    render :file => "auctions/index", :locals => { :auctions => @auctions }
   end
   
   # POST /auctions/view_as/list

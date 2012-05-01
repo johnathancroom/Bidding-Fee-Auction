@@ -9,7 +9,7 @@
   padding: 15px 0;
   position: relative;
 }
-.filters input[type=text]{
+.filters #search input[type=text] {
   background: url(search-icon.png) no-repeat 4px 2px;
   background-color: #fff;
   @include prefix(border-radius, 10px);
@@ -20,6 +20,9 @@
   right: 0px;
   font-size: .67em;
   width: 180px;
+}
+.filters #search input[type=submit] {
+  display: none;
 }
 /* NOT DONE: fallback images*/
 .gridded,
