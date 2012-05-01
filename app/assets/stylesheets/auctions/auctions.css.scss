@@ -12,7 +12,7 @@
 .filters #search input[type=text] {
   background: url(search-icon.png) no-repeat 4px 2px;
   background-color: #fff;
-  @include prefix(border-radius, 10px);
+  @include prefix(border-radius, 9px);
   @include box-shadow(( 0px 3px 0px 0px rgba(255,255,255, .6)));
   margin: -10px 6px 0 0;
   padding: 2px 0px 3px 20px;

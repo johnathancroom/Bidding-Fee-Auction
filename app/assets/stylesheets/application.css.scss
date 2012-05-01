@@ -72,8 +72,8 @@ body {
   
   &:before,
   &:after {
-    border-top: 10px solid #133D42;
-    border-left: 10px solid transparent;
+    border-top: 12px solid #133D42;
+    border-left: 12px solid transparent;
     content:"";
     height: 0px;
     left: -1px;
@@ -82,8 +82,8 @@ body {
     width: 0;
   }
   &:after {
-    border-top: 10px solid #153236;
-    border-right: 10px solid transparent;
+    border-top: 12px solid #153236;
+    border-right: 12px solid transparent;
     left: auto;
     right: 0px;
   }
@@ -131,7 +131,7 @@ body {
   background: #fdfdfd;
   border: 1px solid #d1d1d1;
   @include box-shadow((inset 0px 3px 0px 0px rgba(0,0,0, .04)));
-  margin: 0 10px;
+  margin: 0 12px;
   padding: 12px 20px;
   position: relative;
   top: 2px;
