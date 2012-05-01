@@ -81,15 +81,26 @@ class AuctionsController < ApplicationController
   
  # POST /auctions/bid
   def bid
-    @auction.price += 1
-    @auction.user_id = @current_user.id
-    @auction.save()
+    @user = User.find(@current_user.id)
     
-    render :json => { 
-      'id' => @auction.id,
-      'price' => (number_to_currency @auction.price*0.01),
-      'username' => @auction.user.username
-    }
+    if @user.bids > 0
+      @user.bids -= 1;
+      @user.save()
+      
+      @auction.price += 1
+      @auction.user_id = @user.id
+      @auction.save()
+      
+      render :json => { 
+        :id => @auction.id,
+        :price => (number_to_currency @auction.price*0.01),
+        
+        :username => @user.username,
+        :bids => @user.bids
+      }
+    else
+      render :json => { :error => 'bids' }
+    end
   end
   
   def search

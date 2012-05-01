@@ -23,13 +23,21 @@ $(".button_bid").on("click", function() {
     },
     type: "POST",
     success: function(data, status, xhr) {
-    
-      auctionUpdate(data); // Update self
-      charles.send('updateAuction', data); // Update others
-      
+      if(!data.error)
+      {
+        auctionUpdate(data); // Update self
+        charles.send('updateAuction', data); // Update others
+      }
+      else if(data.error == "bids") // No more bids
+      {
+        alert("No bids!");
+      }
+      else
+      {
+        triggerError(data.error);
+      }
     },
     error: function(xhr, status, error) {
-    
       if(parseInt(xhr.status) == 403) // Not logged in
       {
         alert("Please log in");
@@ -38,7 +46,6 @@ $(".button_bid").on("click", function() {
       {
         triggerError(status);
       }
-      
     }
   });
 });
@@ -81,6 +88,8 @@ function auctionUpdate(auction) {
     .html(auction.price);
     
   $(".highest_bidder", window).html(auction.username);
+  
+  $(".user-bids").html(auction.bids+" bids");
 }
 
 /////////////////////////////////////////////////////////
