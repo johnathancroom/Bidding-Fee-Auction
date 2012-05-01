@@ -15,7 +15,7 @@
 <% else %>
   <%= form_tag logout_users_path do %>
     <div><%= @current_user.username %></div>
-    <div class="user-bids"><%= @current_user.bids %> bids</div>
+    <div class="user-bids"><%= number_with_delimiter @current_user.bids %> bids</div>
     <%= submit_tag "Log out" %>
   <% end %>
 <% end %>
