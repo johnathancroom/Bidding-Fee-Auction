@@ -227,6 +227,10 @@ img {
 .title-bar .item_name {
   padding-left: 6px;
 }
+.single-item {
+  background: #fff;
+  border: 1px solid #d1d1d1;
+}
 @media screen and (max-width: 826px) {
   .list-item .retail {
     display: none;
