@@ -42,7 +42,7 @@ class AuctionsController < ApplicationController
   # POST /auctions
   def create
     @auction = Auction.new(params[:auction])
-    @auction.end_time = Time.new.to_i + 3600*24 # Set end_time 24 hours ahead of now
+    @auction.end_time = Time.new.to_i + 1.day
 
     respond_to do |format|
       if @auction.save
