@@ -22,8 +22,9 @@
 	margin: 7px auto 0 auto;
 	padding: 0 6px;
 	text-decoration: none;
+	
 	&:hover {
-	  color: $btnBase/1.15;
+	  color: $links;
 	}
 }
 img {
@@ -40,6 +41,7 @@ img {
   @include box-shadow((0px 1px 0px 0px rgba(0,0,0, .1)));
 	font-size: 1.1em;
 	padding: 3px 0;
+	
 	&:before {
     @include background2;
 		content:"";
@@ -73,7 +75,7 @@ img {
 	border: 1px solid $bidStroke;
   @include prefix(border-radius, 3px);
   @include box-shadow((
-    inset -.5px 1px 0px 0px rgba(255,255,255, .35),
+    inset 0px 1px 0px 0px rgba(255,255,255, .35),
     inset 0px 15px 10px -10px rgba(255,255,255, .1),
     inset 0px -12px 10px -8px rgba(0,0,0, .25),
     0px 1px 0px 0px ($bidStroke/2.5)
@@ -84,27 +86,30 @@ img {
 	letter-spacing: .06em;
 	margin: 4px auto 10px auto;
 	padding: 3px 0 3px 0;
-  text-shadow:-1px -1px 0px $bidStroke,
-      				 1px -1px 0px $bidStroke,
-      				-1px 1px 0px $bidStroke,
-      				 1px 1px 0px $bidStroke,
-      				 0px 2px 0px ($bidStroke/1.1);
+  text-shadow:
+    -1px -1px 0px $bidStroke,
+    1px -1px 0px $bidStroke,
+    -1px 1px 0px $bidStroke,
+    1px 1px 0px $bidStroke,
+    0px 2px 0px darken($bidStroke, 5%);
   text-transform: uppercase;
 	width: 54px;
+	
 	&:hover,
 	&:focus {
-	  border: 1px solid ($bidStroke/1.15);
+	  border: 1px solid darken($bidStroke, 8%);
     @include box-shadow((
       inset -.5px 1.5px 0px 0px rgba(255,255,255, .4),
       inset 0px 15px 10px -10px rgba(255,255,255, .25),
       inset 0px -12px 10px -8px rgba(0,0,0, .25),
       inset .5px -1px 0px 0px rgba(0,0,0, .18),
-      0px 1px 0px 0px ($bidStroke/2.5)
+      0px 1px 0px 0px darken($bidStroke, 50%)
     ));
-		text-shadow:-1px -1px 0px $bidStroke*1.2,
-      					 1px -1px 0px $bidStroke*1.2,
-      					-1px 1px 0px $bidStroke/1.05,
-      					 1px 1px 0px $bidStroke/1.05;
+		text-shadow:
+  		-1px -1px 0px lighten($bidStroke, 2%),
+      1px -1px 0px lighten($bidStroke, 2%),
+      -1px 1px 0px darken($bidStroke, 1%),
+      1px 1px 0px darken($bidStroke, 1%);
 	}
 	&:active {
 		@include box-shadow((
@@ -112,12 +117,13 @@ img {
       inset 0px -15px 10px -10px rgba(255,255,255, .1),
       inset 0px 12px 10px -8px rgba(0,0,0, .18),
       inset .5px -1px 0px 0px rgba(255,255,255, .05),
-      0px 1px 0px 0px ($bidStroke/2.5)
+      0px 1px 0px 0px darken($bidStroke, 70%)
     ));
-    text-shadow:-1px -1px 0px $bidStroke*1.05,
-          			 1px -1px 0px $bidStroke*1.05,
-          			-1px 1px 0px $bidStroke*1.2,
-          			 1px 1px 0px $bidStroke*1.2;
+    text-shadow:
+      -1px -1px 0px lighten($bidStroke, 2%),
+      1px -1px 0px lighten($bidStroke, 2%),
+      -1px 1px 0px lighten($bidStroke, 7%),
+      1px 1px 0px lighten($bidStroke, 7%);
 	}
 }
 .list-item {
@@ -162,12 +168,12 @@ img {
 }
 .list-item .end_time {
   background: none;
-  @include box-shadow(( 0px 0px 0px 0px rgba(0,0,0, 0)));
+  @include box-shadow((0px 0px 0px 0px rgba(0,0,0, 0)));
   color: #444;
   font-size: 1em;
-  font-weight: bold;
   letter-spacing: .07em;
   width: 13%;
+  
   &:before {
     height: 0px;
   }
@@ -175,6 +181,7 @@ img {
 .list-item .price {
 	color: #444;
 	font-size: 1.03em;
+	font-weight: normal;
   letter-spacing: .06em;
 	margin-left: 12%; // Width of self
 	margin-top: 0px;

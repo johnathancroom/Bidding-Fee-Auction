@@ -53,6 +53,7 @@
   left: 12px;
   top: 8px;
   width: 16px;
+  
   &:before,
   &:after {
     content: "";
@@ -74,12 +75,12 @@
   &:hover:before,
   &:hover:after {
     background: #fff;
-    border-color: $btnBase*1.07;
+    border-color: lighten($links, 15%);
     @include box-shadow(( 
       0px 8px 0px -2px #fff,
       0px 8px 0px -1px rgba(62,159,178, .5),  /*inset shade*/
       0px 8px 0px -1px #fff,
-      0px 8px 0px 0px $btnBase*1.07,            /*faux border*/
+      0px 8px 0px 0px lighten($links, 15%),            /*faux border*/
       0px 8px 2px 0px rgba(0,0,0, .2),
       inset 0px 0px 0px 1px rgba(62,159,178, .5),   /*inset shade*/
       0px 0px 2px 0px rgba(0,0,0, .2)
@@ -92,6 +93,7 @@
 }
 .listed {
   left: 38px;
+  
   &:before,
   &:after {
     background: #c9c9c9;
@@ -112,9 +114,9 @@
   }
   &:hover:before,
   &:hover:after {
-    background:  $btnBase*1.1;
+    background:  lighten($links, 15%);
     @include box-shadow(( 
-      0px 8px 0px 0px $btnBase*1.07,
+      0px 8px 0px 0px lighten($links, 15%),
       0px 8px 2px 0px rgba(0,0,0, .1),
       0px 0px 2px 0px rgba(0,0,0, .1)
     ));

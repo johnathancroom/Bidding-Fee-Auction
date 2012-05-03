@@ -60,13 +60,12 @@ body {
 	padding:90px;
 }
 .nav {
-  background: $btnBase*1.1;
+  background: lighten($btnBase, 2%);
   border: 1px solid #2e7d8a;
   @include box-shadow((
     inset  0px 0px 13px 3px rgba(0,0,0, .18),
     inset	0px 15px 10px -10px rgba(255,255,255, .1),
     inset	0px -15px 0px 0px rgba(0,0,0, .08),
-    
     0px 2px 0px 0px #1B5A64
   ));
   
@@ -96,13 +95,15 @@ body {
   padding: 6px 0 6px 0;
   text-align: center;
   text-decoration: none;  
-  text-shadow: 0px 2px 0px ($bidStroke*1.05),
-               0px -1px 0px ($bidStroke);
+  text-shadow: 
+    0px 2px 0px lighten($bidStroke, 1%),
+    0px -1px 0px $bidStroke;
   text-transform: uppercase;
   width: 78px;
   
   &:hover,
-  &:focus {
+  &:focus,
+  &:active {
     border-left-color: #2e7d8a;
     border-right-color: #237d8a;
     @include box-shadow((
@@ -112,8 +113,9 @@ body {
       0px 0px 5px 1px rgba(0, 0, 0, 0.1)
     ));
     outline: 0;
-    text-shadow: 0px 1px 0px ($bidStroke*1.05),
-                 0px -1px 0px ($bidStroke);
+    text-shadow:
+      0px 1px 0px lighten($bidStroke, 1%),
+      0px -1px 0px $bidStroke;
   }
   &:active {
     border: 1px solid #2e7d8a;
@@ -123,8 +125,6 @@ body {
       inset	0px -30px 0px 0px rgba(0,0,0, .04),
       inset 0px 2px 4px 0px rgba(46,125,138, .8)
     ));
-    text-shadow: 0px 1px 0px ($bidStroke*1.05),
-                 0px -1px 0px ($bidStroke);
   }
 }
 .user_functions {
@@ -152,12 +152,13 @@ body {
 	font: inherit;
 }
 .user_functions a {
-  color: #317d89;
+  color: $links;
   font-size: .75em;
   text-decoration: none;
+  
   &:hover,
   &:focus {
-    color: #317d89*1.15;
+    color: lighten($links, 6%);
     text-decoration: underline;
   }
 }
