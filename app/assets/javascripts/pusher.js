@@ -9,7 +9,7 @@ Pusher.log = function(message) {
 
 var auctionSocket = {
   options: {
-    key: '7da53c26a313d349592f',
+    key: '429ab7f0784ed502885d',
     channel: 'auctions',
     channelType: 'presence-',
     eventType: 'client-'
