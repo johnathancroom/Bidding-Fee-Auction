@@ -28,16 +28,20 @@
 <%= link_to 'Edit', edit_auction_path(@auction) %> |
 <%= link_to 'Back', auctions_path %>-->
 
-<div class="single-item">
+<div class="auction single-item">
   <div class="item_name">Generated name</div>
-  <div class="retail">$4,000<span>retail</span></div>
-  <p class="item_description">The new thrid-generation iPad features a stunning Retina display, 5MP iSight camera, and ultrafast 4G LTE. Apple products are the bomb diggity so you should get it."</p>
-  <a href="#">Learn more</a>
-  <img alt="ipad" src="/assets/listings/ipad-large.png">
-  <a href="#">View more images</a>
-	<div class="price"><span>Auction price</span>$0.00</div>
-	<div class="end_time"><span>Time left</span>00:00:00</div>
-	<div class="highest_bidder"><span>Highest bidder</span>Nobody</div>
-	<div class="bid_container"><input type="button" class="button_bid" value="Bid"></div>
-	<p class="fine_print">Fine printed stuff could go here. Blag blarg blarg blarg, I love kittens</p>
+  <div class="retail">$4,000 <span>retail</span></div>
+  <p class="item_description">
+    The new thrid-generation iPad features a stunning Retina display, 5MP iSight camera, and ultrafast 4G LTE.
+    <a href="#">Learn more</a>
+    <img alt="ipad" src="/assets/listings/ipad-large.png">
+  </p>
+  <a href="#" class="view_more">View more images</a>
+  <section class="auction_action">
+  	<div class="price"><span>Auction price</span>$0.00</div>
+  	<div class="end_time"><span>Time left</span>00:00:00</div>
+  	<div class="highest_bidder"><span>Highest bidder</span>Nobody</div>
+  	<div class="bid_container"><input type="button" class="button_bid" value="Bid"></div>
+  	<p class="fine_print">Fine printed stuff could go here. Blag blarg blarg blarg, I love kittens</p>
+  </section>
 </div>

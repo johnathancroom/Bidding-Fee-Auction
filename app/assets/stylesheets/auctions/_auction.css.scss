@@ -85,7 +85,7 @@ img {
 	font-size: 1.04em;
 	letter-spacing: .06em;
 	margin: 4px auto 10px auto;
-	padding: 3px 0 3px 0;
+	padding: 3px 0;
   text-shadow:
     -1px -1px 0px $bidStroke,
     1px -1px 0px $bidStroke,
@@ -99,7 +99,7 @@ img {
 	&:focus {
 	  border: 1px solid darken($bidStroke, 8%);
     @include box-shadow((
-      inset -.5px 1.5px 0px 0px rgba(255,255,255, .4),
+      inset 0px 1px 0px 0px rgba(255,255,255, .4),
       inset 0px 15px 10px -10px rgba(255,255,255, .25),
       inset 0px -12px 10px -8px rgba(0,0,0, .25),
       inset .5px -1px 0px 0px rgba(0,0,0, .18),
@@ -113,11 +113,11 @@ img {
 	}
 	&:active {
 		@include box-shadow((
-		  inset -.5px 1px 0px 0px rgba(255,255,255, .3),
+		  inset 0px 1px 0px 0px rgba(255,255,255, .3),
       inset 0px -15px 10px -10px rgba(255,255,255, .1),
       inset 0px 12px 10px -8px rgba(0,0,0, .18),
-      inset .5px -1px 0px 0px rgba(255,255,255, .05),
-      0px 1px 0px 0px darken($bidStroke, 70%)
+      inset 0px -1px 0px 0px rgba(255,255,255, .05),
+      0px 1px 0px 0px darken($bidStroke, 60%)
     ));
     text-shadow:
       -1px -1px 0px lighten($bidStroke, 2%),
@@ -214,7 +214,8 @@ img {
 .title-bar .retail,
 .title-bar .end_time,
 .title-bar .highest_bidder,
-.title-bar .price {
+.title-bar .price,
+.single-item .auction_action span {
   color: #999;
   font-size: .8em;
   font-weight: normal;
@@ -230,6 +231,70 @@ img {
 .single-item {
   background: #fff;
   border: 1px solid #d1d1d1;
+  text-align: left;
+  width: auto;
+}
+.single-item * {
+  padding: 0;
+  font-size: 1em;
+  font-weight: normal;
+  display: inline-block;
+}
+.single-item a {
+  color: $links;
+  font-size: .84em;
+  text-decoration: none;
+}
+.single-item .item_name,
+.single-item .retail,
+.single-item .item_description {
+  margin-left: 12px;
+} 
+.single-item .item_name {
+  font-size: 1.1em;
+}
+.single-item .retail {
+  color: #999;
+  display: block;
+  font-size: .84em;
+}
+.single-item .item_description {
+  color: #777;
+  font-size: .84em;
+  padding: 0 460px 0 0;
+}
+.single-item .item_description a {
+  display: block;
+  font-size: 1em;
+}
+.single-item img,
+.single-item .view_more {
+  margin-top: 20px;
+  position: absolute;
+  right: 170px;
+  top: -60px;
+}
+.single-item .view_more {
+  color: #999;
+  right: 300px;
+  top: 180px;
+  line-height: .9em;
+  width: 90px;
+}
+.single-item .auction_action {
+  position: inline-block;
+}
+.single-item .auction_action * {
+  display: block;
+}
+.single-item .button_bid {
+  font-size: 1.1em;
+  padding: 3px 0;
+  width: 58px;
+}
+.single-item .fine_print {
+  color: #999;
+  font-size: .6em;
 }
 @media screen and (max-width: 826px) {
   .list-item .retail {

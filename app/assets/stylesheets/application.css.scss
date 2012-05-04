@@ -52,7 +52,7 @@ body {
 /*border: 1px solid green;*/
 /*	padding: 0 30px;*/
 	position: fixed;
-	width: 236px;
+	width: 236px; /*236*/
 }
 .logo {
 	background: rgba(0,0,0, .005);
@@ -60,7 +60,7 @@ body {
 	padding:90px;
 }
 .nav {
-  background: lighten($btnBase, 2%);
+  background: lighten($btnBase, 6%);
   border: 1px solid #2e7d8a;
   @include box-shadow((
     inset  0px 0px 13px 3px rgba(0,0,0, .18),
@@ -68,21 +68,22 @@ body {
     inset	0px -15px 0px 0px rgba(0,0,0, .08),
     0px 2px 0px 0px #1B5A64
   ));
+  margin: 0 3px;
   
   &:before,
   &:after {
-    border-top: 12px solid #133D42;
-    border-left: 12px solid transparent;
+    border-top: 10px solid #133D42;
+    border-left: 10px solid transparent;
     content:"";
-    height: 0px;
+    height: 0;
     left: -1px;
     position: absolute;
     top: 35px;
     width: 0;
   }
   &:after {
-    border-top: 12px solid #153236;
-    border-right: 12px solid transparent;
+    border-top: 10px solid #153236;
+    border-right: 10px solid transparent;
     left: auto;
     right: 0px;
   }
@@ -92,14 +93,14 @@ body {
   color: #fff;
   display: inline-block;
   font-size: .96em;
-  padding: 6px 0 6px 0;
+  padding: 6px 0;
   text-align: center;
   text-decoration: none;  
   text-shadow: 
     0px 2px 0px lighten($bidStroke, 1%),
     0px -1px 0px $bidStroke;
   text-transform: uppercase;
-  width: 78px;
+  width: 76px;/*76*/
   
   &:hover,
   &:focus,
