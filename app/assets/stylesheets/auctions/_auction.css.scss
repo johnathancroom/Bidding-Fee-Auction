@@ -215,7 +215,7 @@ img {
 .title-bar .end_time,
 .title-bar .highest_bidder,
 .title-bar .price,
-.single-item .auction_action span {
+.single-item .action span {
   color: #999;
   font-size: .8em;
   font-weight: normal;
@@ -235,29 +235,27 @@ img {
   width: auto;
   display: block;
 }
-.single-item * {
-  padding: 0;
-  font-size: 1em;
-  font-weight: normal;
-  display: inline-block;
-}
 .single-item a {
   color: $links;
   font-size: .84em;
   text-decoration: none;
 }
+.single-item .info,
+.single-item .images,
+.single-item .actions {
+  border: 1px solid red;
+  display: inline-block;
+  margin-left: -4px;
+  vertical-align: top;
+  width: 33%;
+}
 .single-item .item_name,
 .single-item .retail,
 .single-item .item_description {
-  margin-left: 12px;
+/*  margin-left: 12px;*/
 } 
 .single-item .item_name {
   font-size: 1.1em;
-}
-.single-item .retail,
-.single-item .item_description {
-  display: block;
-  width: 200px;
 }
 single-item .retail {
   color: #999;
@@ -274,26 +272,26 @@ single-item .retail {
 .single-item img,
 .single-item .view_more {
   top: 0px;
-  width: 209px;
 }
 .single-item .view_more {
   color: #999;
   line-height: .9em;
-  width: 90px;
 }
-.single-item .auction_action * {
-  display: block;
+.single-item .price,
+.single-item .end_time,
+.single-item .highest_bidder {
+  @include background1;
+  @include box-shadow((inset 0px -1px 0px 0px rgba(0,0,0, .0)));
+	padding: 4px 0;
 }
 .single-item .button_bid {
   font-size: 1.1em;
   padding: 3px 0;
   margin: 0;
-  width: 58px;
 }
 .single-item .fine_print {
   color: #999;
   font-size: .6em;
-  width: 170px;
 }
 @media screen and (max-width: 853px) {
   .list-item .retail {
