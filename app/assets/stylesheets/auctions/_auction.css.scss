@@ -233,6 +233,7 @@ img {
   border: 1px solid #d1d1d1;
   text-align: left;
   width: auto;
+  display: block;
 }
 .single-item * {
   padding: 0;
@@ -253,15 +254,18 @@ img {
 .single-item .item_name {
   font-size: 1.1em;
 }
-.single-item .retail {
-  color: #999;
+.single-item .retail,
+.single-item .item_description {
   display: block;
+  width: 200px;
+}
+single-item .retail {
+  color: #999;
   font-size: .84em;
 }
 .single-item .item_description {
   color: #777;
   font-size: .84em;
-  padding: 0 460px 0 0;
 }
 .single-item .item_description a {
   display: block;
@@ -269,20 +273,13 @@ img {
 }
 .single-item img,
 .single-item .view_more {
-  margin-top: 20px;
-  position: absolute;
-  right: 170px;
-  top: -60px;
+  top: 0px;
+  width: 209px;
 }
 .single-item .view_more {
   color: #999;
-  right: 300px;
-  top: 180px;
   line-height: .9em;
   width: 90px;
-}
-.single-item .auction_action {
-  position: inline-block;
 }
 .single-item .auction_action * {
   display: block;
@@ -290,13 +287,15 @@ img {
 .single-item .button_bid {
   font-size: 1.1em;
   padding: 3px 0;
+  margin: 0;
   width: 58px;
 }
 .single-item .fine_print {
   color: #999;
   font-size: .6em;
+  width: 170px;
 }
-@media screen and (max-width: 826px) {
+@media screen and (max-width: 853px) {
   .list-item .retail {
     display: none;
   }
