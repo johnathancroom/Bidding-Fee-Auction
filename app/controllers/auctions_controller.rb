@@ -1,5 +1,5 @@
 class AuctionsController < ApplicationController
-  include ActionView::Helpers::NumberHelper # inclue number functions
+  include ActionView::Helpers::NumberHelper # include number functions
   
   before_filter :get_auction, :only => [:destory, :update, :bid, :edit, :show]
   
@@ -81,6 +81,9 @@ class AuctionsController < ApplicationController
   
   # POST /auctions/bid
   def bid
+    app = Rails.application.routes.url_helpers # routes
+    helper = ApplicationController.helpers # include helpers
+    
     @user = User.find(@current_user.id)
     
     if @user.bids > 0
@@ -95,7 +98,7 @@ class AuctionsController < ApplicationController
         :id => @auction.id,
         :price => (number_to_currency @auction.price*0.01),
         
-        :username => @user.username,
+        :username => (helper.link_to @user.username, app.user_path(@user.id)),
         :bids => (number_with_delimiter @user.bids)
       }
     else
