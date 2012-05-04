@@ -1,20 +1,20 @@
-/* @include prefix(box-shadow...)*/
-@mixin prefix($property, $value) {
-	-webkit-#{$property}: $value;
-	   -moz-#{$property}: $value;
-	    -ms-#{$property}: $value;
-	     -o-#{$property}: $value;
-	        #{$property}: $value;
+/* prefix(box-shadow...)*/
+prefix($property, $value) {
+	-webkit-{$property}: $value;
+	   -moz-{$property}: $value;
+	    -ms-{$property}: $value;
+	     -o-{$property}: $value;
+	        {$property}: $value;
 }
 
-/* @include box-shadow((junk, junk2)); */
-@mixin box-shadow($values) {
-	-webkit-box-shadow: $values;
-	   -moz-box-shadow: $values;
-	        box-shadow: $values;
+/* box-shadow(junk, junk2); */
+box-shadow() {
+	-webkit-box-shadow: arguments;
+	   -moz-box-shadow: arguments;
+	        box-shadow: arguments;
 }
 
-@mixin transition($values) {
+transition($values) {
   -webkit-transition: $values;
      -moz-transition: $values;
       -ms-transition: $values;
@@ -22,7 +22,7 @@
           transition: $values;
 }
 
-@mixin background1 {
+background1() {
 	background-color: #F6F6F6;
 	background: -moz-linear-gradient(top,  rgba(234,234,234,0) 30%, rgba(234,234,234,0.14) 50%, rgba(229,229,229,0.5) 99%, rgba(229,229,229,1) 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,rgba(234,234,234,0)), color-stop(50%,rgba(234,234,234,0.14)), color-stop(99%,rgba(229,229,229,0.5)), color-stop(100%,rgba(229,229,229,1)));
@@ -31,7 +31,7 @@
 	background: -ms-linear-gradient(top,  rgba(234,234,234,0) 30%,rgba(234,234,234,0.14) 50%,rgba(229,229,229,0.5) 99%,rgba(229,229,229,1) 100%);
 	background: linear-gradient(top,  rgba(234,234,234,0) 30%,rgba(234,234,234,0.14) 50%,rgba(229,229,229,0.5) 99%,rgba(229,229,229,1) 100%);
 }
-@mixin background2 {
+background2() {
 	background: #EAEAEA;
 	background: -moz-linear-gradient(left, rgba(234,234,234,0.5) 10%, rgba(234,234,234,1) 50%, rgba(234,234,234,0.5) 90%);
 	background: -webkit-gradient(linear, left top, right top, color-stop(10%,rgba(234,234,234,0.5)), color-stop(50%,rgba(234,234,234,1)), color-stop(90%,rgba(234,234,234,0.5)));

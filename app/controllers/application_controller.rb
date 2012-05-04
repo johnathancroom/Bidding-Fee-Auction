@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  Stylus.debug = false
+  
   protect_from_forgery
   
   # Check for keys initializer

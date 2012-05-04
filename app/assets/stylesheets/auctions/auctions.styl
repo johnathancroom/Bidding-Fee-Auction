@@ -1,24 +1,29 @@
+$btnBase = #3e9fb2;
+$bidTXT = #fff;
+$bidStroke = #3d7d89;
+$links = #317d89;
+
 .filter-bar {
   margin: 0 8px 12px 0;
 }
 .filters {
   backround: #fdfdfd;
   border: 1px solid #d1d1d1;
-  @include prefix(border-radius, 3px);
-  @include box-shadow((inset 0px 3px 0px 0px rgba(255,255,255, .6)));
+  prefix(border-radius, 3px);
+  box-shadow(inset 0px 3px 0px 0px rgba(255,255,255, .6));
   padding: 15px 0;
   position: relative;
 }
 .filters #search input[type=text] {
   background: transparent url(search-icon.png) no-repeat 4px 2px;
   border: 0;
-  @include prefix(border-radius, 9px);
+  prefix(border-radius, 9px);
   font-size: .67em;
   margin: -10px 6px 0 0;
   padding: 2px 0px 3px 25px;
   position: absolute;
   right: -5px;
-  @include transition(width ease 1s);
+  transition(width ease 1s);
   width: 0;
   
   &:hover {
@@ -61,13 +66,13 @@
     left: 0px;
     top: -10px;
     width: 4px;
-    @include box-shadow(( 
-      0px 8px 0px -2px #fff,
-      0px 8px 0px -1px rgba(0,0,0, .05),  /*edge shade*/
-      0px 8px 0px -1px #fff,
-      0px 8px 0px 0px #b4b4b4,            /*faux border*/
+    box-shadow(
+      0px 8px 0px -2px #fff\,
+      0px 8px 0px -1px rgba(0,0,0, .05)\,
+      0px 8px 0px -1px #fff\,
+      0px 8px 0px 0px #b4b4b4\,
       inset 0px 0px 0px 1px rgba(0,0,0, .05)
-    ));
+    );
   }
   &:after {
     left: 8px;
@@ -76,15 +81,15 @@
   &:hover:after {
     background: #fff;
     border-color: lighten($links, 15%);
-    @include box-shadow(( 
-      0px 8px 0px -2px #fff,
-      0px 8px 0px -1px rgba(62,159,178, .5),  /*inset shade*/
-      0px 8px 0px -1px #fff,
-      0px 8px 0px 0px lighten($links, 15%),            /*faux border*/
-      0px 8px 2px 0px rgba(0,0,0, .2),
-      inset 0px 0px 0px 1px rgba(62,159,178, .5),   /*inset shade*/
+    box-shadow(
+      0px 8px 0px -2px #fff\,
+      0px 8px 0px -1px rgba(62,159,178, .5)\,
+      0px 8px 0px -1px #fff\,
+      0px 8px 0px 0px lighten($links, 15%)\,
+      0px 8px 2px 0px rgba(0,0,0, .2)\,
+      inset 0px 0px 0px 1px rgba(62,159,178, .5)\,
       0px 0px 2px 0px rgba(0,0,0, .2)
-    ));
+    );
   }
 }
 .gridded:before,
@@ -103,23 +108,23 @@
     left: -2px;
     top: -1px;
     width: 14px;
-    @include box-shadow((
-      0px 8px 0px 0px #c9c9c9,
-      0px 1px 0px 0px #fff,
+    box-shadow(
+      0px 8px 0px 0px #c9c9c9\,
+      0px 1px 0px 0px #fff\,
       0px 9px 0px 0px #fff
-    ));
+    );
   }
   &:after {
     top: 3px;
   }
   &:hover:before,
   &:hover:after {
-    background:  lighten($links, 15%);
-    @include box-shadow(( 
-      0px 8px 0px 0px lighten($links, 15%),
-      0px 8px 2px 0px rgba(0,0,0, .1),
+    background: lighten($links, 15%);
+    box-shadow(
+      0px 8px 0px 0px lighten($links, 15%)\,
+      0px 8px 2px 0px rgba(0,0,0, .1)\,
       0px 0px 2px 0px rgba(0,0,0, .1)
-    ));
+    );
   }
 }
 #new_auction {
