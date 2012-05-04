@@ -173,11 +173,12 @@ input[type=password],
 	padding: 4px 2px 2px 6px;
 	width: 170px;
 	&:focus {
+	  border-color: lighten($links, 60%);
 		@include box-shadow(( 0px 0px 3px 1px $btnBase));
 		outline: 0;
 	}
 	&.error {
-	  border: 1px solid #eaafaf/1.2;
+	  border: 1px solid darken(#eaafaf, 12%);
 	  @include box-shadow(( 0px 0px 4px 0px #d14b4b));
 	}
 }
