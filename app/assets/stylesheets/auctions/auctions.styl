@@ -10,7 +10,7 @@ $links = #317d89;
   backround: #fdfdfd;
   border: 1px solid #d1d1d1;
   prefix(border-radius, 3px);
-  box-shadow(inset 0px 3px 0px 0px rgba(255,255,255, .6));
+  box-shadow: inset 0px 3px 0px 0px rgba(255,255,255, .6);
   padding: 15px 0;
   position: relative;
 }
@@ -66,13 +66,12 @@ $links = #317d89;
     left: 0px;
     top: -10px;
     width: 4px;
-    box-shadow(
-      0px 8px 0px -2px #fff\,
-      0px 8px 0px -1px rgba(0,0,0, .05)\,
-      0px 8px 0px -1px #fff\,
-      0px 8px 0px 0px #b4b4b4\,
-      inset 0px 0px 0px 1px rgba(0,0,0, .05)
-    );
+    box-shadow:
+      0px 8px 0px -2px #fff,
+      0px 8px 0px -1px rgba(0,0,0, .05),
+      0px 8px 0px -1px #fff,
+      0px 8px 0px 0px #b4b4b4,
+      inset 0px 0px 0px 1px rgba(0,0,0, .05);
   }
   &:after {
     left: 8px;
@@ -81,15 +80,14 @@ $links = #317d89;
   &:hover:after {
     background: #fff;
     border-color: lighten($links, 15%);
-    box-shadow(
-      0px 8px 0px -2px #fff\,
-      0px 8px 0px -1px rgba(62,159,178, .5)\,
-      0px 8px 0px -1px #fff\,
-      0px 8px 0px 0px lighten($links, 15%)\,
-      0px 8px 2px 0px rgba(0,0,0, .2)\,
-      inset 0px 0px 0px 1px rgba(62,159,178, .5)\,
-      0px 0px 2px 0px rgba(0,0,0, .2)
-    );
+    box-shadow:
+      0px 8px 0px -2px #fff,
+      0px 8px 0px -1px rgba(62,159,178, .5),
+      0px 8px 0px -1px #fff,
+      0px 8px 0px 0px lighten($links, 15%),
+      0px 8px 2px 0px rgba(0,0,0, .2),
+      inset 0px 0px 0px 1px rgba(62,159,178, .5),
+      0px 0px 2px 0px rgba(0,0,0, .2);
   }
 }
 .gridded:before,
@@ -108,11 +106,10 @@ $links = #317d89;
     left: -2px;
     top: -1px;
     width: 14px;
-    box-shadow(
-      0px 8px 0px 0px #c9c9c9\,
-      0px 1px 0px 0px #fff\,
-      0px 9px 0px 0px #fff
-    );
+    box-shadow:
+      0px 8px 0px 0px #c9c9c9,
+      0px 1px 0px 0px #fff,
+      0px 9px 0px 0px #fff;
   }
   &:after {
     top: 3px;
@@ -120,11 +117,10 @@ $links = #317d89;
   &:hover:before,
   &:hover:after {
     background: lighten($links, 15%);
-    box-shadow(
-      0px 8px 0px 0px lighten($links, 15%)\,
-      0px 8px 2px 0px rgba(0,0,0, .1)\,
-      0px 0px 2px 0px rgba(0,0,0, .1)
-    );
+    box-shadow:
+      0px 8px 0px 0px lighten($links, 15%),
+      0px 8px 2px 0px rgba(0,0,0, .1),
+      0px 0px 2px 0px rgba(0,0,0, .1);
   }
 }
 #new_auction {

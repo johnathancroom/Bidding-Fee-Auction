@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  Stylus.debug = false
+  Stylus.debug = true # Show line numbers in compiled CSS
   
   protect_from_forgery
   

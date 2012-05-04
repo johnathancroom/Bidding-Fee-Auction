@@ -6,7 +6,7 @@ $links = #317d89;
 .auction {
 	background: #fff;
 	border: 1px solid #d1d1d1;
-	box-shadow(inset 0px -2px 6px 0px rgba(0,0,0, .08));
+	box-shadow: inset 0px -2px 6px 0px rgba(0,0,0, .08);
 	color: #333;
 	display: inline-block;
 	margin:0 6px 10px 0;
@@ -43,7 +43,7 @@ img {
 }
 .end_time {
   background1();
-  box-shadow(0px 1px 0px 0px rgba(0,0,0, .1));
+  box-shadow: 0px 1px 0px 0px rgba(0,0,0, .1);
 	font-size: 1.1em;
 	padding: 3px 0;
 	
@@ -79,12 +79,11 @@ img {
 	background: $btnBase;
 	border: 1px solid $bidStroke;
   prefix(border-radius, 3px);
-  box-shadow(
-    inset 0px 1px 0px 0px rgba(255,255,255, .35)\,
-    inset 0px 15px 10px -10px rgba(255,255,255, .1)\,
-    inset 0px -12px 10px -8px rgba(0,0,0, .25)\,
-    0px 1px 0px 0px darken($bidStroke, 24%)
-  );
+  box-shadow:
+    inset 0px 1px 0px 0px rgba(255,255,255, .35),
+    inset 0px 15px 10px -10px rgba(255,255,255, .1),
+    inset 0px -12px 10px -8px rgba(0,0,0, .25),
+    0px 1px 0px 0px darken($bidStroke, 24%);
 	color: $bidTXT;
 	cursor: pointer;
 	font-size: 1.04em;
@@ -103,13 +102,12 @@ img {
 	&:hover,
 	&:focus {
 	  border: 1px solid darken($bidStroke, 8%);
-    box-shadow(
-      inset 0px 1px 0px 0px rgba(255,255,255, .4)\,
-      inset 0px 15px 10px -10px rgba(255,255,255, .25)\,
-      inset 0px -12px 10px -8px rgba(0,0,0, .25)\,
-      inset .5px -1px 0px 0px rgba(0,0,0, .18)\,
-      0px 1px 0px 0px darken($bidStroke, 50%)
-    );
+    box-shadow:
+      inset 0px 1px 0px 0px rgba(255,255,255, .4),
+      inset 0px 15px 10px -10px rgba(255,255,255, .25),
+      inset 0px -12px 10px -8px rgba(0,0,0, .25),
+      inset .5px -1px 0px 0px rgba(0,0,0, .18),
+      0px 1px 0px 0px darken($bidStroke, 50%);
 		text-shadow:
   		-1px -1px 0px lighten($bidStroke, 2%),
       1px -1px 0px lighten($bidStroke, 2%),
@@ -117,13 +115,12 @@ img {
       1px 1px 0px darken($bidStroke, 1%);
 	}
 	&:active {
-		box-shadow(
-		  inset 0px 1px 0px 0px rgba(255,255,255, .3)\,
-      inset 0px -15px 10px -10px rgba(255,255,255, .1)\,
-      inset 0px 12px 10px -8px rgba(0,0,0, .18)\,
-      inset 0px -1px 0px 0px rgba(255,255,255, .05)\,
-      0px 1px 0px 0px darken($bidStroke, 60%)
-    );
+		box-shadow:
+		  inset 0px 1px 0px 0px rgba(255,255,255, .3),
+      inset 0px -15px 10px -10px rgba(255,255,255, .1),
+      inset 0px 12px 10px -8px rgba(0,0,0, .18),
+      inset 0px -1px 0px 0px rgba(255,255,255, .05),
+      0px 1px 0px 0px darken($bidStroke, 60%);
     text-shadow:
       -1px -1px 0px lighten($bidStroke, 2%),
       1px -1px 0px lighten($bidStroke, 2%),
@@ -134,19 +131,19 @@ img {
 .list-item {
   border-top: 1px solid rgba(0,0,0, .07);
   border-bottom: 0;
-  box-shadow(0 0 0 0 #000);
+  box-shadow: 0 0 0 0 #000;
   display: block;
   margin: 0 8px 0 0;
   text-align: left;
   width: auto;
 }
 .list-item:nth-of-type(odd) {
-  box-shadow(inset 0px -20px 26px -10px rgba(0,0,0, .04)); 
+  box-shadow: inset 0px -20px 26px -10px rgba(0,0,0, .04); 
 }
 /* FALLBACK: first-of-type, NOT DONE */
 .list-item:first-of-type {
   border-top: 1px solid #d1d1d1;
-  box-shadow(0px 0px 0px 0px #000);//Get rid of box-shadow
+  box-shadow: 0px 0px 0px 0px #000;//Get rid of box-shadow
 }
 /* FALLBACK: last-of-type, NOT DONE */
 .list-item:last-of-type {
@@ -173,7 +170,7 @@ img {
 }
 .list-item .end_time {
   background: none;
-  box-shadow(0px 0px 0px 0px rgba(0,0,0, 0));
+  box-shadow: 0px 0px 0px 0px rgba(0,0,0, 0);
   color: #444;
   font-size: 1em;
   letter-spacing: .07em;
@@ -286,7 +283,7 @@ single-item .retail {
 .single-item .end_time,
 .single-item .highest_bidder {
   background1();
-  box-shadow(inset 0px -1px 0px 0px rgba(0,0,0, .0));
+  box-shadow: inset 0px -1px 0px 0px rgba(0,0,0, .0);
 	padding: 4px 0;
 }
 .single-item .button_bid {

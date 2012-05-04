@@ -67,12 +67,11 @@ body {
 .nav {
   background: lighten($btnBase, 6%);
   border: 1px solid #2e7d8a;
-  box-shadow(
-    inset  0px 0px 13px 3px rgba(0,0,0, .18)\,
-    inset	0px 15px 10px -10px rgba(255,255,255, .1)\,
-    inset	0px -15px 0px 0px rgba(0,0,0, .08)\,
-    0px 2px 0px 0px #1B5A64
-  );
+  box-shadow:
+    inset  0px 0px 13px 3px rgba(0,0,0, .18),
+    inset	0px 15px 10px -10px rgba(255,255,255, .1),
+    inset	0px -15px 0px 0px rgba(0,0,0, .08),
+    0px 2px 0px 0px #1B5A64;
   margin: 0 3px;
   
   &:before,
@@ -112,12 +111,11 @@ body {
   &:active {
     border-left-color: #2e7d8a;
     border-right-color: #237d8a;
-    box-shadow(
-      inset 0px 1px 1px 0px rgba(255,255,255, .1)\,
-      inset 0px 4px 1px 2px rgba(255,255,255, .05)\,
-      inset	0px -30px 0px 0px rgba(255,255,255, .07)\,
-      0px 0px 5px 1px rgba(0, 0, 0, 0.1)
-    );
+    box-shadow:
+      inset 0px 1px 1px 0px rgba(255,255,255, .1),
+      inset 0px 4px 1px 2px rgba(255,255,255, .05),
+      inset	0px -30px 0px 0px rgba(255,255,255, .07),
+      0px 0px 5px 1px rgba(0, 0, 0, 0.1);
     outline: 0;
     text-shadow:
       0px 1px 0px lighten($bidStroke, 1%),
@@ -125,18 +123,17 @@ body {
   }
   &:active {
     border: 1px solid #2e7d8a;
-    box-shadow(
-      inset 0px 0px 13px 3px rgba(0,0,0, .05)\,
-      inset	0px 15px 10px -10px rgba(255,255,255, .04)\,
-      inset	0px -30px 0px 0px rgba(0,0,0, .04)\,
-      inset 0px 2px 4px 0px rgba(46,125,138, .8)
-    );
+    box-shadow:
+      inset 0px 0px 13px 3px rgba(0,0,0, .05),
+      inset	0px 15px 10px -10px rgba(255,255,255, .04),
+      inset	0px -30px 0px 0px rgba(0,0,0, .04),
+      inset 0px 2px 4px 0px rgba(46,125,138, .8);
   }
 }
 .user_functions {
   background: #fdfdfd;
   border: 1px solid #d1d1d1;
-  box-shadow(inset 0px 3px 0px 0px rgba(0,0,0, .04));
+  box-shadow: inset 0px 3px 0px 0px rgba(0,0,0, .04);
   margin: 0 12px;
   padding: 12px 20px;
   position: relative;
@@ -180,12 +177,12 @@ input[type=password],
 	
 	&:focus {
 	  border-color: lighten($links, 60%);
-		box-shadow(0px 0px 3px 1px $btnBase);
+		box-shadow: 0px 0px 3px 1px $btnBase;
 		outline: 0;
 	}
 	&.error {
 	  border: 1px solid darken(#eaafaf, 12%);
-	  box-shadow(0px 0px 4px 0px #d14b4b);
+	  box-shadow: 0px 0px 4px 0px #d14b4b;
 	}
 }
 .user_functions input[type=button],
@@ -194,10 +191,9 @@ input[type=password],
 	border: 1px solid #d1d1d1;
   prefix(border-radius, 3px);
   bottom: -6px;
-  box-shadow(
-    inset 0px -14px 10px -10px rgba(0,0,0, .075)\,
-    inset 0px 3px 0px 0px rgba(255,255,255, .6)
-  );
+  box-shadow:
+    inset 0px -14px 10px -10px rgba(0,0,0, .075),
+    inset 0px 3px 0px 0px rgba(255,255,255, .6);
 	color: rgba(0,0,0, .6);
 	cursor: pointer;
 	font-size: .9em;
@@ -210,21 +206,19 @@ input[type=password],
   &:hover {
   	color: rgba(0,0,0, .55);
   	border: 1px solid #c6c6c6;
-    box-shadow(
-      inset 0px -18px 12px -10px rgba(0,0,0, .09)\,
-      inset 0px -1px 0px 0px rgba(0,0,0, .05)\,
-      inset 0px -3px 0px 0px rgba(255,255,255, .3)\,
-      inset 0px 3px 0px 0px rgba(255,255,255, .1)
-    );
+    box-shadow:
+      inset 0px -18px 12px -10px rgba(0,0,0, .09),
+      inset 0px -1px 0px 0px rgba(0,0,0, .05),
+      inset 0px -3px 0px 0px rgba(255,255,255, .3),
+      inset 0px 3px 0px 0px rgba(255,255,255, .1);
     text-shadow: 0px 2px 0px rgba(255,255,255, .7);
   }
   &:active {
-    box-shadow(
-      inset 0px 14px 8px -8px rgba(0,0,0, .075)\,
-      inset 0px -1px 0px 0px rgba(0,0,0, .1)\,
-      inset 0px -3px 0px 0px rgba(255,255,255, 1)\,
-      inset 0px 3px 0px 0px rgba(255,255,255, .6)
-    );
+    box-shadow:
+      inset 0px 14px 8px -8px rgba(0,0,0, .075),
+      inset 0px -1px 0px 0px rgba(0,0,0, .1),
+      inset 0px -3px 0px 0px rgba(255,255,255, 1),
+      inset 0px 3px 0px 0px rgba(255,255,255, .6);
     text-shadow: 0px -1px 0px #fff;
   }
 }
