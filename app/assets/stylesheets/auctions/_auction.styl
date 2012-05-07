@@ -97,11 +97,12 @@ img {
 	&:hover,
 	&:focus {
 	  border: 1px solid darken($bidStroke, 8%);
+	  border-bottom-color: darken($bidStroke, 20%);
     box-shadow:
       inset 0px 1px 0px 0px rgba(255,255,255, .4),
       inset 0px 15px 10px -10px rgba(255,255,255, .25),
       inset 0px -12px 10px -8px rgba(0,0,0, .25),
-      inset .5px -1px 0px 0px rgba(0,0,0, .18),
+      inset .5px -1px 0px 0px rgba(255, 255, 255, .05),
       0px 1px 0px 0px darken($bidStroke, 50%);
 		text-shadow:
   		-1px -1px 0px lighten($bidStroke, 2%),
@@ -227,6 +228,7 @@ img {
 .single-item {
   background: #fff;
   border: 1px solid #d1d1d1;
+	box-shadow: inset 0px -2px 6px 0px rgba(0,0,0, .05);
   text-align: left;
   width: auto;
   display: block;
@@ -246,14 +248,16 @@ img {
   vertical-align: top;
 }
 .single-item .info {
+  padding: 6px 0 0 12px;
   width: 30%;
 }
 .single-item .images {
-  width: 43%;
+  padding: 8px 0 0 68px; //233 184 image size
+  width: 45%;
 }
 .single-item .actions {
   border-left: 1px solid #e1e1e1;
-  width: 26%;
+  width: 24%;
 }
 .single-item .item_name,
 .single-item .retail,
@@ -262,63 +266,129 @@ img {
 } 
 .single-item .item_name {
   font-size: 1.1em;
+  margin-bottom: 12px;
 }
-single-item .retail {
-  color: #999;
-  font-size: .84em;
+.single-item .retail {
+  color: #bbb;
 }
 .single-item .item_description {
-  color: #777;
-  font-size: .84em;
+  color: #888;
+  font-size: .82em;
 }
 .single-item .item_description a {
   display: block;
   font-size: 1em;
+  width: 72px;
+  
+  &:before {
+    border-top: 4px solid transparent;
+    border-left: 4px solid lighten($links, 10%);
+    border-bottom: 4px solid transparent;
+    content:"";
+    height: 0;
+    left: 65px;
+    position: absolute;
+    top: 6px;
+    width: 0;
+  }
+  &:hover:before {
+    border-left: 4px solid lighten($links, 20%);
+    content: "";
+    left: 67px;
+  }
+  &:hover {
+    color: lighten($links, 10%);
+  }
 }
-.single-item img,
-.single-item .view_more {
-  top: 0px;
+.single-item img {
+  margin: 0;
 }
-.single-item .view_more {
-  color: #999;
-  line-height: .9em;
-}
-.single-item .actions span {
+.single-item .images a {
   color: #999;
   display: block;
-  font-weight: normal;
+  font-size: .75em;
+  line-height: .95em;
+  width: 54px;
+  margin: 6px 0 0 14px;
+  
+  &:before {
+    border-top: 4px solid transparent;
+    border-left: 4px solid #c1c1c1;
+    border-bottom: 4px solid transparent;
+    content:"";
+    height: 0;
+    left: 40px;
+    position: absolute;
+    top: 13px;
+    width: 0;
+  }
+  &:hover:before {
+    border-left: 4px solid #ccc;
+    content: "";
+    left: 42px;
+  }
+  &:hover {
+    color: #afafaf;
+  }
 }
-.single-item .price span {
-  font-size: .45em;
+.single-item .actions:after {
+  background: transparent;
+  box-shadow: inset -60px 0px 50px -10px #fff;
+  content:"";
+  height: 141px;
+  right: 0;
+  position: absolute;
+  top: 0;
+  width: 60px;
 }
 .single-item .price,
 .single-item .end_time,
 .single-item .highest_bidder {
   background: none;
-  box-shadow(
-    inset 0px -20px 26px -10px rgba(0,0,0, .04)\,
-    inset 0px -1px 0px 0px rgba(0,0,0, .05)
-  );
-  padding: 6px 0 6px 12px;
+  box-shadow:
+    inset 0px -14px 26px -10px rgba(0,0,0, .06),
+    inset 0px -1px 0px 0px rgba(0,0,0, .05),
+    inset 0px -2px 0px 0px rgba(255,255,255, 1);
+  padding: 6px 0 10px 10px;
+  margin: 0;
+}
+.single-item .actions span {
+  color: #bbb;
+  display: block;
+  font-weight: normal;
+}
+.single-item .price span {
+  font-size: .5em;
+}
+.single-item .highest_bidder span {
+  font-size: .8em;
+}
+.single-item .price {
+  font-size: 1.5em;
+  padding: 2px 0 12px 10px;
+}
+.single-item .end_time {
+  padding: 14px; //get rid of once it works
   
   &:before {
-    content:"";
-    background: none;
+    background: transparent;
   }
 }
 .single-item .highest_bidder {
   color: #3d666d;
+  font-size: .9em;
+  line-height: 1.1em;
 }
 .single-item .button_bid {
   font-size: 1.1em;
-  padding: 3px 0;
-  margin: 12px;
+  padding: 4px 0px;
+  margin: 12px 0 12px 10px;
 }
 .single-item .fine_print {
-  color: #c1c1c1;
+  color: #bbb;
   font-size: .6em;
-  line-height: 1.3em;
-  text-align: center;
+  line-height: 1.5em;
+  padding: 0 0 8px 10px;
 }
 @media screen and (max-width: 853px) {
   .list-item .retail {
