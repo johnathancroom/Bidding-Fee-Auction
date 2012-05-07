@@ -31,9 +31,9 @@
 <div class="auction single-item">
   <section class="info">
     <div class="item_name">Generated name</div>
-    <div class="retail">$4,000 <span>retail</span></div>
+    <div class="retail"><%= number_to_currency @auction.listing.retail, :precision => 0 %> <span>retail</span></div>
     <p class="item_description">
-      The new thrid-generation iPad features a stunning Retina display, 5MP iSight camera, and ultrafast 4G LTE.
+      The new third-generation iPad features a stunning Retina display, 5MP iSight camera, and ultrafast 4G LTE.
       <a href="#">Learn more</a>
     </p>
   </section>
@@ -43,11 +43,20 @@
     <a href="#">View more images</a>
   </section>
   
-  <section class="actions">
-  	<div class="price"><span>Auction price</span>$0.00</div>
-  	<div class="end_time"><span>Time left</span>00:00:00</div>
-  	<div class="highest_bidder"><span>Highest bidder</span>Nobody</div>
-  	<div class="bid_container"><input type="button" class="button_bid" value="Bid"></div>
-  	<p class="fine_print">Fine printed stuff could go here or something. Blarg blarg blarg blarg</p>
+  <section class="actions" data-id="<%= @auction.id %>">
+    <div class="price_container">
+      Auction price
+      <span class="price"><%= number_to_currency (@auction.price*0.01) %>
+    </div>
+    <div class="end_time_container">
+      Time left
+      <span class="end_time" data-end-time="<%= @auction.end_time %>">00:00:00</span>
+    </div>
+    <div class="highest_bidder_container">
+      Highest bidder
+      <span class="highest_bidder"><%= link_to @auction.user.username, @auction.user %></span>
+    </div>
+    <div class="bid_container"><input type="button" class="button_bid" value="Bid"></div>
+    <p class="fine_print">Fine printed stuff could go here or something. Blarg blarg blarg blarg</p>
   </section>
 </div>
