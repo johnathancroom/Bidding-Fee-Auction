@@ -1,9 +1,9 @@
 <div class="auction <%= session[:view_as] %>" data-id="<%= auction.id %>">
   <%= link_to auction.listing.name, auction, :class => "item_name" %>
   <%= link_to image_tag(auction.listing.image_url, :alt => auction.listing.name), auction %>
-	<div class="retail"><%= number_to_currency auction.listing.retail, :precision => 0 %> <span>retail</span></div>
-	<div class="end_time" data-end-time="<%= auction.end_time %>">00:00:00</div>
-	<div class="price"><%= number_to_currency auction.price*0.01 %></div>
-	<div class="highest_bidder"><%= link_to auction.user.username, auction.user %></div>
-	<div class="bid_container"><input type="button" class="button_bid" value="Bid"></div>
+  <div class="retail"><%= number_to_currency auction.listing.retail, :precision => 0 %> <span>retail</span></div>
+  <div class="end_time" data-end-time="<%= auction.end_time %>">00:00:00</div>
+  <div class="price"><%= number_to_currency auction.price*0.01 %></div>
+  <div class="highest_bidder"><%= link_to auction.user.username, auction.user %></div>
+  <div class="bid_container"><input type="button" class="button_bid" value="Bid"></div>
 </div>
