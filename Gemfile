@@ -11,7 +11,7 @@ gem 'sqlite3'
 # in production environments by default.
 group :assets do
   # gem 'sass-rails',   '~> 3.2.3'
-  gem 'stylus'
+  gem 'stylus', :git => "https://github.com/lucasmazza/ruby-stylus.git"
   # gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -32,6 +32,9 @@ group :development do
   gem 'guard-livereload'
   gem 'rack-livereload'
 end
+
+# Server
+gem 'thin'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'

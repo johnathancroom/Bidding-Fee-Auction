@@ -1,28 +1,28 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<title>Bidding Fee Auctions</title>
-	<meta charset="utf-8">
+  <title>Bidding Fee Auctions</title>
+  <meta charset="utf-8">
   <%= stylesheet_link_tag "manifest" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<section class="container">
-		<header class="sidebar">
-  		<div class="logo"></div>
-  		<nav class="nav">
-  		  <%= link_to "Home", root_path %><!--
-  		  --><%= link_to "Browse", auctions_path %><!--
-  		  --><a href="javascript:">Help</a>
-  		</nav>
-			<section class="user_functions">
-				<%= render "login_form" %>
-			</section>
-  	</header>
-		<section class="content">
-	    <%= yield %>
-		</section>
-	</section>
-	<%= javascript_include_tag "manifest" %>
+  <section class="container">
+    <header class="sidebar">
+      <div class="logo"></div>
+      <nav class="nav">
+        <%= link_to "Home", root_path %><!--
+        --><%= link_to "Browse", auctions_path %><!--
+        --><a href="javascript:">Help</a>
+      </nav>
+      <section class="user_functions">
+        <%= render "login_form" %>
+      </section>
+    </header>
+    <section class="content">
+      <%= yield %>
+    </section>
+  </section>
+  <%= javascript_include_tag "manifest" %>
 </body>
 </html>
