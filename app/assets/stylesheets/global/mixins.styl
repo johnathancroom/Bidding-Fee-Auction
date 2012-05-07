@@ -1,13 +1,8 @@
-/* prefix(box-shadow...)*/
-prefix($property, $value) {
-	-webkit-{$property}: $value;
-	   -moz-{$property}: $value;
-	    -ms-{$property}: $value;
-	     -o-{$property}: $value;
-	        {$property}: $value;
+border-radius() {
+  -webkit-border-radius: arguments;
+          border-radius: arguments;
 }
 
-/* box-shadow: junk, junk2; */
 box-shadow() {
 	-webkit-box-shadow: arguments;
 	   -moz-box-shadow: arguments;
