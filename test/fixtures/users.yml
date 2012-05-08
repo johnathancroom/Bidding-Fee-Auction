@@ -4,8 +4,10 @@ one:
   id: 1
   username: MyString
   bids: 1
+  password_hash: MyString
 
 two:
-  id: 1
+  id: 2
   username: MyString
   bids: 1
+  password_hash: MyString

@@ -2,14 +2,14 @@
 
 one:
   id: 1
-  name: MyString
+  listing_id: 1
   price: 9.99
-  bidder: MyString
+  user_id: 1
   end_time: 1
 
 two:
-  id: 1
-  name: MyString
+  id: 2
+  listing_id: 1
   price: 9.99
-  bidder: MyString
+  user_id: 1
   end_time: 1

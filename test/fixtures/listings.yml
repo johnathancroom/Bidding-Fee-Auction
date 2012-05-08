@@ -4,8 +4,10 @@ one:
   id: 1
   name: MyString
   retail: 1
+  image_url: MyString
 
 two:
-  id: 1
+  id: 2
   name: MyString
   retail: 1
+  image_url: MyString
