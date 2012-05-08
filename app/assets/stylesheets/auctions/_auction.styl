@@ -229,9 +229,9 @@ img {
   background: #fff;
   border: 1px solid #d1d1d1;
 	box-shadow: inset 0px -2px 6px 0px rgba(0,0,0, .05);
+  display: block;
   text-align: left;
   width: auto;
-  display: block;
 }
 .single-item a {
   color: $links;
@@ -241,7 +241,6 @@ img {
 .single-item .info,
 .single-item .images,
 .single-item .actions {
-/*  border: 1px solid red;*/
   display: inline-block;
   left: 12px;
   margin-left: -4px;
@@ -261,7 +260,9 @@ img {
 }
 .single-item .item_name,
 .single-item .retail,
-.single-item .item_description {
+.single-item .item_description,
+.single-item .price,
+.single-item .end_time {
   padding: 0;
 } 
 .single-item .item_name {
@@ -300,16 +301,13 @@ img {
     color: lighten($links, 10%);
   }
 }
-.single-item img {
-  margin: 0;
-}
 .single-item .images a {
   color: #999;
   display: block;
   font-size: .75em;
   line-height: .95em;
-  width: 54px;
   margin: 6px 0 0 14px;
+  width: 54px;
   
   &:before {
     border-top: 4px solid transparent;
@@ -333,42 +331,42 @@ img {
 }
 .single-item .actions:after {
   background: transparent;
-  box-shadow: inset -60px 0px 50px -10px #fff;
+  box-shadow: inset -50px 0px 50px -10px #fff;
   content:"";
-  height: 141px;
-  right: 0;
+  height: 145px;
   position: absolute;
+  right: 0;
   top: 0;
   width: 60px;
 }
-.single-item .price,
-.single-item .end_time,
-.single-item .highest_bidder {
+.single-item .price_container,
+.single-item .end_time_container,
+.single-item .highest_bidder_container {
   background: none;
   box-shadow:
-    inset 0px -14px 26px -10px rgba(0,0,0, .06),
+    inset 0px -14px 26px -10px rgba(0,0,0, .05),
     inset 0px -1px 0px 0px rgba(0,0,0, .05),
     inset 0px -2px 0px 0px rgba(255,255,255, 1);
-  padding: 6px 0 10px 10px;
+  color: #bbb;
+  font-size: .75em;
   margin: 0;
+  padding: 4px 0 10px 10px;
 }
 .single-item .actions span {
-  color: #bbb;
+  color: #333;
   display: block;
   font-weight: normal;
 }
-.single-item .price span {
-  font-size: .5em;
-}
-.single-item .highest_bidder span {
-  font-size: .8em;
+.single-item .price,
+.single-item .end_time {
+  font-size: 1.7em;
 }
 .single-item .price {
-  font-size: 1.5em;
-  padding: 2px 0 12px 10px;
+  margin: 0;
 }
 .single-item .end_time {
-  padding: 14px; //get rid of once it works
+  background: none;
+  box-shadow: none;
   
   &:before {
     background: transparent;
@@ -376,13 +374,13 @@ img {
 }
 .single-item .highest_bidder {
   color: #3d666d;
-  font-size: .9em;
-  line-height: 1.1em;
+  font-size: 1.4em;
+  line-height: .8em;
 }
 .single-item .button_bid {
   font-size: 1.1em;
+  margin: 10px 0 10px 10px;
   padding: 4px 0px;
-  margin: 12px 0 12px 10px;
 }
 .single-item .fine_print {
   color: #bbb;
